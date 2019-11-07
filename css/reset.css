@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,figure,figcaption{
+	margin:0;	/* 外边距清零 */
+	padding:0;	/* 内边距清零 */
+}
+
+h1,h2,h3,h4,h5,h6,b,strong{
+	font-weight:normal;			/* 清除文字加粗 */
+	font-size:100%;
+}
+i,em{
+	font-style:normal;			/* 清除倾斜 */
+}
+a{
+	text-decoration:none;		/* 清除文字样式 */
+	color:#666;
+}
+li{
+	list-style:none;			/* 清除列表项目符号 */
+}
+img{
+	vertical-align:top;
+	border:0;	
+}
+input{
+	outline:none;	
+}
+.clearfix{
+	*zoom:1;	
+}
+.clearfix:after{
+	content:' ';
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;	
+}
+
