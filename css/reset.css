@@ -4,7 +4,10 @@ body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,s
 	margin:0;	/* 外边距清零 */
 	padding:0;	/* 内边距清零 */
 }
-
+body,html{
+	font:14px "微软雅黑",Arial;	/* 设置全局基础字号 */
+	color: #333333;
+}
 h1,h2,h3,h4,h5,h6,b,strong{
 	font-weight:normal;			/* 清除文字加粗 */
 	font-size:100%;
@@ -14,7 +17,9 @@ i,em{
 }
 a{
 	text-decoration:none;		/* 清除文字样式 */
-	color:#666;
+	display: inline-block;
+	font-size: 14px;
+	color:#333333;
 }
 li{
 	list-style:none;			/* 清除列表项目符号 */
