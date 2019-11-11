@@ -86,7 +86,7 @@ function header(path) {
             $('#login .son .code').text(str);
         });
 
-        var bln = false, timer = null, iphoneNunber;//短信验证成功后为true
+        var bln = false, timer = null, iphoneNunber;//短信验证成功后bln为true
         $('#login').on('click', '.bt3', e => {//打开验证框
             var str1 = $('#login .code').text().toLowerCase();
             var str2 = $('#login .t3').val().toLowerCase();
@@ -127,11 +127,17 @@ function header(path) {
 
         //判定手机验证码
         $('#login').on('click', '.bt2', e => {
-            if (bln && ($('#login .txt').val() == iphoneNunber)) {
-                $('#login .clause').fadeIn(100, () => {//出现条款
-                    $('#header .mengBan2').css('display', 'initial');
-                });
-            } else {
+            if (bln && ($('#login .txt').val() == iphoneNunber)) {//判定成功
+                console.log(localStorage.getItem('user'+iphoneNunber));
+                if(localStorage.getItem('user'+iphoneNunber)){
+                    alert('用户不存在')
+                    return
+                }else{
+                    $('#login .clause').fadeIn(100, () => {//出现条款
+                        $('#header .mengBan2').css('display', 'initial');
+                    });
+                }
+            } else {//判定失败
                 $('#login .hint2').css('display', 'initial');
             };
         });
@@ -139,6 +145,9 @@ function header(path) {
         $('#login').on('click', '.bt4', e => {
             clearInterval(timer);//清除计时器
             delLogin();//清除登录模块
+            // 将新用户信息存入本地
+            var json = JSON.stringify({"iphoneNunber":iphoneNunber});
+            localStorage.setItem('user'+ iphoneNunber, json );
         })
     });
 };
