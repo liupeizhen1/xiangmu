@@ -2,7 +2,7 @@ export default header;
 function header(path) {
     //将公共头部引入页面
     $('#header').load(path, function () {// 引入头部后执行
-        whetherLogin()
+        whetherLogin()//判定是否已登录
         //控制二级导航栏的显隐
         $('#header .nav>ul>li,#header .right>li').hover(
             function (e) {

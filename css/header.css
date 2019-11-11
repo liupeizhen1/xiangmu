@@ -2,6 +2,10 @@
 .container{
     width: 1280px;
     margin: 0 auto;
+    cursor: pointer;
+}
+.w-cursor1{
+    cursor: default;
 }
 /* 头部开始 */
 #header{
@@ -123,6 +127,7 @@
     line-height: 16px;
     height: 16px;
     font-weight: 700;
+    cursor: default;
 }
 #header .nav .con1 .list li:nth-of-type(1) .title{
     background: url(../img/index_img/icon10.png) no-repeat left center;
