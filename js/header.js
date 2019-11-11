@@ -20,7 +20,7 @@ function header(path) {
         });
 
         //关闭登录框 
-        $('#login').on('click', '.del', ()=>{
+        $('#login').on('click', '.del', () => {
             clearInterval(timer);//清除计时器
             delLogin();//清除登录模块
         });
@@ -50,7 +50,7 @@ function header(path) {
             "input": function () {
                 var hint = $(this).siblings('.hint');
                 var reg = /^1\d{10}$/;
-                $('#login .hint2').css('display','none')
+                $('#login .hint2').css('display', 'none')
                 $(this).val($(this).val().trim());//清除首位空格
                 clearTimeout(timeOut);//防抖
                 timeOut = setTimeout(() => {
@@ -128,11 +128,10 @@ function header(path) {
         //判定手机验证码
         $('#login').on('click', '.bt2', e => {
             if (bln && ($('#login .txt').val() == iphoneNunber)) {//判定成功
-                console.log(localStorage.getItem('user'+iphoneNunber));
-                if(localStorage.getItem('user'+iphoneNunber)){
+                if (localStorage.getItem('user' + iphoneNunber)) {//为老用户
                     alert('用户不存在')
                     return
-                }else{
+                } else {//为新用户
                     $('#login .clause').fadeIn(100, () => {//出现条款
                         $('#header .mengBan2').css('display', 'initial');
                     });
@@ -146,8 +145,8 @@ function header(path) {
             clearInterval(timer);//清除计时器
             delLogin();//清除登录模块
             // 将新用户信息存入本地
-            var json = JSON.stringify({"iphoneNunber":iphoneNunber});
-            localStorage.setItem('user'+ iphoneNunber, json );
+            var json = JSON.stringify({ "iphoneNunber": iphoneNunber });
+            localStorage.setItem('user' + iphoneNunber, json);
         })
     });
 };
@@ -174,7 +173,7 @@ function loginInit() {//初始化登录框状态
     $('#login .con input[type=checkbox]').prop('checked', true);
     $('#login .selecter .number').text($('#login .selecter b').eq(0).text())
 };
-function delLogin(){//清除登录模块
+function delLogin() {//清除登录模块
     $('#login').stop(true, true).fadeOut(400, () => {
         $('#header .mengBan').css("display", "none");
         $('#login').empty();//清除登录模块
