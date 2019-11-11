@@ -532,7 +532,7 @@
     padding: 0 20px ;
 }
 
-#login .son strong{
+#login .son strong,#login .clause strong{
     display: inline-block;
     font-size: 18px;
     font-weight: 900;
@@ -555,6 +555,7 @@
 #login .son .t3{
     text-align: left;
     margin-top: 20px;
+    height: 30px;
     padding-left: 0;
     padding-right: 0;
 }
@@ -587,4 +588,52 @@
     color: #eeeeee;
     text-align: center;
     z-index: 120;
+}
+#login .hint2{
+    color: #dc1e32;
+    font-size: 12px;
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    display: none;
+}
+/* 条款 */
+#login .clause{
+    position: fixed;
+    z-index: 110;
+    width: 960px;
+    height: 278px;
+    box-sizing: border-box;   
+    display: none; 
+}
+#login .clause .conText{
+    font-size: 14px;
+    line-height: 28px;
+    background: #f2f2f2;
+    border-top: 1px solid #dddddd;
+    padding:0 20px 18px;
+}
+#login .clause strong{
+    margin-bottom: 0;
+    text-indent: 20px;
+}
+#login .clause .conText a{
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#login .clause .conText a:hover{
+    color: -webkit-link;
+}
+#login .clause .bt4{
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 15px auto 0;
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 50px;
+    border-radius: 20px;
+    background: #fc1e32;
 }
