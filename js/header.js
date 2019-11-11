@@ -2,6 +2,7 @@ export default header;
 function header(path) {
     //将公共头部引入页面
     $('#header').load(path, function () {// 引入头部后执行
+        whetherLogin()
         //控制二级导航栏的显隐
         $('#header .nav>ul>li,#header .right>li').hover(
             function (e) {
@@ -86,7 +87,7 @@ function header(path) {
             $('#login .son .code').text(str);
         });
 
-        var bln = false, timer = null, iphoneNunber;//短信验证成功后bln为true
+        var bln = false, timer = null, iphoneNumber;//短信验证成功后bln为true
         $('#login').on('click', '.bt3', e => {//打开验证框
             var str1 = $('#login .code').text().toLowerCase();
             var str2 = $('#login .t3').val().toLowerCase();
@@ -95,7 +96,7 @@ function header(path) {
                     $('#header .mengBan2').css('display', 'none');
                     $('#login .t3').val('');
                     //存储手机号
-                    iphoneNunber = $('#login .txt').val();
+                    iphoneNumber = $('#login .txt').val();
                     // 发送短信
                     var code = randomWord(6, 10);//6位数字验证码
                     alert(code);//发送
@@ -127,15 +128,18 @@ function header(path) {
 
         //判定手机验证码
         $('#login').on('click', '.bt2', e => {
-            if (bln && ($('#login .txt').val() == iphoneNunber)) {//判定成功
-                if (localStorage.getItem('user' + iphoneNunber)) {//为老用户
-                    alert('用户不存在')
-                    return
+            if (bln && ($('#login .txt').val() == iphoneNumber)) {//判定成功
+                if (localStorage.getItem('user' + iphoneNumber)) {//为老用户
+                    // 存储登录状态
+                    var json = JSON.stringify({ "iphoneNumber": iphoneNumber });
+                    localStorage.setItem('userState', json);
+                    clearInterval(timer);//清除计时器
+                    whetherLogin();//添加我的顺丰模块
                 } else {//为新用户
                     $('#login .clause').fadeIn(100, () => {//出现条款
                         $('#header .mengBan2').css('display', 'initial');
                     });
-                }
+                };
             } else {//判定失败
                 $('#login .hint2').css('display', 'initial');
             };
@@ -143,11 +147,12 @@ function header(path) {
         //注册成功
         $('#login').on('click', '.bt4', e => {
             clearInterval(timer);//清除计时器
-            delLogin();//清除登录模块
-            // 将新用户信息存入本地
-            var json = JSON.stringify({ "iphoneNunber": iphoneNunber });
-            localStorage.setItem('user' + iphoneNunber, json);
-        })
+            // 将新用户账号存入本地
+            var json = JSON.stringify({ "iphoneNumber": iphoneNumber });
+            localStorage.setItem('user' + iphoneNumber, json);
+            localStorage.setItem('userState', json);
+            whetherLogin();//添加我的顺丰模块
+        });
     });
 };
 // 全局功能函数
@@ -167,6 +172,19 @@ function widthAuto(dom) {//脱标的父元素宽度度自适应
     });
     $(dom).width(width);
 };
+// 用户是否登录
+function whetherLogin() {
+    var userState = JSON.parse(localStorage.getItem('userState'));
+    if (userState && userState.iphoneNumber) {//用户已登录
+        var str = userState['iphoneNumber'].substring(0, 3) + '****' + userState['iphoneNumber'].substring(7, 12);
+        $('#header .right li').eq(0).html(`
+            <span>欢迎您：</span>
+            <span>${str}</span>
+            <a class = "my" href="https://www.sf-express.com/cn/sc/user_center/">我的顺丰&gt;</a>
+        `);
+        delLogin();//清除登录模块
+    };
+};
 function loginInit() {//初始化登录框状态
     $('#login .option').eq(0).addClass('active');
     $('#login .con').eq(0).css('display', 'block');
@@ -183,6 +201,7 @@ function hintInit(hint) {//初始化验证栏状态
     $(hint).text('！');
     $(hint).css("borderWidth", "2");
 };
+
 function randomWord(num, len) {// 随机产生num位验证码,len为取值范围
     var str = "",
         arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];

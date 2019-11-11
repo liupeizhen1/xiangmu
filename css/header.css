@@ -74,7 +74,9 @@
     width: 40px;
     cursor: pointer;
 }
-
+#header .right .my{
+    margin-left: 20px;
+}
 /* 隐藏的二级导航栏 */
 #header .hide{
     display: none;
@@ -443,6 +445,7 @@
 }
 #login .txt:focus{
     height: 32px;
+    margin-bottom: 0;
     border-bottom: 2px solid #dc1e32;
 }
 #login .con .form .hint{
@@ -553,9 +556,10 @@
     background: url(../img/index_img/bg2.png) repeat-x;
     text-align: center;
 }
-#login .son .t3{
+#login .t3{
     text-align: left;
     margin-top: 20px;
+    margin-bottom: 1px;
     height: 31px;
     padding-left: 0;
     padding-right: 0;
