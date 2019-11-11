@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_express</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.8%" y="-6.1%" width="105.6%" height="113.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.084522192 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="91.0744419%" y1="0%" x2="5.38721587%" y2="94.0848214%" id="linearGradient-2">
+            <stop stop-color="#898C8E" offset="0%"></stop>
+            <stop stop-color="#2A2A2A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="知道2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_list" transform="translate(-78.000000, -112.000000)">
+            <g id="Group-5" filter="url(#filter-1)" transform="translate(57.000000, 112.000000)">
+                <g id="快捷入口">
+                    <g id="标签1" transform="translate(21.000000, 0.000000)">
+                        <g id="ic_寄快递_on" transform="translate(3.796730, 2.000000)">
+                            <path d="M28.20327,19 L28.20327,27 L24.20327,27 L24.20327,19 L4.20327,19 L4.20327,50 L35.20327,50 L35.20327,54 L41.5771365,54 L0.203269996,54 L0.203269996,18.2087112 L0.203269996,15.6315789 L-2.22044605e-16,15.6315789 L0.203269996,15.3158044 L0.203269996,15 L0.40655927,15 L10.0623419,-8.8817842e-14 L42.2618362,-8.8817842e-14 L51.9176188,15 L52.20327,15 L52.20327,15.4437514 L52.3241781,15.6315789 L52.20327,15.6315789 L52.20327,18.2087112 L52.20327,35.5257334 C52.2815697,35.7481356 52.3241781,35.9874888 52.3241781,36.2368421 C52.3241781,36.4861954 52.2815697,36.7255486 52.20327,36.9479508 L52.20327,43.3738665 L52.20327,37 L52.1841777,37 C51.8787039,37.800292 51.1068411,38.3684211 50.2029276,38.3684211 C49.2990142,38.3684211 48.5271514,37.800292 48.2216776,37 L48.20327,37 L48.20327,19 L28.20327,19 Z M24.20327,4 L11.2992043,4 L4.79459785,15 L24.20327,15 L24.20327,4 Z M28.20327,4 L28.20327,15 L47.6115222,15 L41.1022963,4 L28.20327,4 Z M46.0657887,50 L38.4314604,42.3656717 L41.4313616,39.3657705 L51.9894424,49.9238514 C52.8178423,50.7522512 52.8178423,52.0953527 51.9894424,52.9237526 C51.9812485,52.9319465 51.9730041,52.9400595 51.9647104,52.9480913 C51.6268904,53.5744022 50.964782,54 50.20327,54 L35.20327,54 L35.20327,50 L46.0657887,50 Z" id="Combined-Shape" fill="url(#linearGradient-2)"></path>
+                            <path d="M10.20327,44 C9.0987005,44 8.20327,43.1045695 8.20327,42 C8.20327,40.8954305 9.0987005,40 10.20327,40 C11.3078395,40 12.20327,40.8954305 12.20327,42 C12.20327,43.1045695 11.3078395,44 10.20327,44 Z M17.20327,44 C16.0987005,44 15.20327,43.1045695 15.20327,42 C15.20327,40.8954305 16.0987005,40 17.20327,40 C18.3078395,40 19.20327,40.8954305 19.20327,42 C19.20327,43.1045695 18.3078395,44 17.20327,44 Z" id="Combined-Shape" fill="#FF5B5B"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
