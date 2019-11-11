@@ -555,7 +555,7 @@
 #login .son .t3{
     text-align: left;
     margin-top: 20px;
-    height: 30px;
+    height: 31px;
     padding-left: 0;
     padding-right: 0;
 }
@@ -577,13 +577,14 @@
     background: url(../img/index_img/xiaolian.png) no-repeat left ;
 }
 #login .son .hide{
+    position: absolute;
     left: -10px;
     right: -10px;
-    top: 0;
+    top: 5px;
     border: 0;
     padding: 0 10px;
-    height: 40px;
-    line-height: 40px;
+    height: 46px;
+    line-height: 46px;
     background: rgba(60,60,60,.8);
     color: #eeeeee;
     text-align: center;
