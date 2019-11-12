@@ -4,6 +4,7 @@
     background: #000000;
 }
 #footer .footer_inner{
+    position: relative;
     padding: 50px 0;  
 }
 #footer .list{
@@ -141,4 +142,17 @@
 }
 #footer .bottom .text-right{
     margin-top: 15px;
+}
+#footer .goHeader{
+    /* display: none; */
+    /* position: fixed; */
+    width: 48px;
+    height: 48px;
+    background: url(../img/index_img/fanHui1.png);
+    z-index: 1000;
+    cursor: pointer;
+}
+#footer .goHeader:hover{
+    background: url(../img/index_img/fanHui2.png);
+
 }
