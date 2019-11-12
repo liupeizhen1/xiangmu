@@ -1,0 +1,153 @@
+.content-c{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.coop-title{
+    font-size: 18px;
+    color: #333;
+    line-height: 30px;
+    padding-left: 64px;
+    background: url(../img/1006.png) no-repeat left center;
+    margin: 50px 172px 50px 30px;
+}
+/* 用户输入部分 */
+.table-sub{
+    width: 100%;
+    border-top: 1px dashed #cdcdcd;
+}
+.sub-list{
+    width: 100%;
+    padding: 40px 0;
+    border-bottom: 1px dashed #cdcdcd;
+    margin-top: -34px;
+}
+.subcladd{
+    display: inline-block;
+    padding-left: 90px;
+    margin-top: 24px;
+    padding-right: 0;
+    position: relative;
+}
+.subcladd .name{
+    float: left;
+    font-size: 16px;
+    color: #333;
+    width: 200px;
+    height: 34px;
+    line-height: 34px;
+    text-align: right;
+    position: relative;
+}
+.star-red{
+    color: #dc1e32;
+    font-size: 20px;
+    width: 17px;
+    margin-left: 0;
+    margin-right: -17px;
+    position: relative;
+    top: 3px;
+    display: inline-block;
+}
+.input{
+    width: 563px;
+    padding-left: 17px;
+    background: #f1f1f1;
+    line-height: 34px;
+    font-size: 18px;
+    float: left;
+    position: relative;
+    margin-left: 130px;
+}
+.input .text{
+    width: 100%;
+    height: 100%;
+    background: 0 0;
+    color: #333;
+    cursor: pointer;
+}
+.error-prompr{
+    font-size: 14px;
+    color: #dc1e32;
+    position: absolute;
+    left: 1010px;
+    top: 40px;
+    min-width: 200px;
+    top:6px;
+    display: none;
+    /* display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    margin-left: 6px; */
+}
+.error-prompr img{
+    display: inline-block;
+}
+#yamzheng{
+    display:inline-block;
+    margin-left: 35px!important;
+}
+#yamzheng img{
+    height: 31px;
+    margin-left: 30px;
+    float: left;
+    width: auto;
+    cursor: pointer;
+}
+.error-prompr2{
+    font-size: 14px;
+    color: #dc1e32;
+}
+#input-b{
+    width: 373px;
+}
+.checkbox{
+    position: relative;
+}
+#policy{
+    float: left;
+    margin-left: -20px;
+    margin: 4px 0 0;
+    line-height: normal;
+    box-sizing: border-box;
+    padding: 0;
+}
+.checkbox span{
+    margin-left:10px;
+}
+#policyload{
+    color: grey;
+}
+/* 底部 */
+.submit-bootom{
+    overflow: hidden;
+    padding-left: 0;
+    margin-top: 33px;
+}
+.prompt{
+    font-size: 15px;
+    color: #dc1e32;
+    margin-right: 130px;
+    padding-left: 90px;
+}
+.prompr2{
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    padding: 10px 0;
+    color: #dc1e32;
+}
+.submit-wrap{
+    text-align: center;
+}
+.submit-wrap a{
+    display: inline-block;
+    float: none;
+    background: #dc1e32;
+    color: #fff;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 25px;
+}

@@ -84,7 +84,20 @@ $('.import-in').keydown(function(){
     })
     $('.left-btn2').removeAttr('disabled')
 })
+// $('.import-in').keyup(function(){
+//     $('.left-btn2').attr('disabled')
+// })
 $('.left-btn2').click(function(){
+    fasong()
+})
+$(document).keypress(function(e){
+    var keycode = e.keyCode;
+    if(keycode == '13'){
+        fasong()
+    }
+})
+// 发送函数
+function fasong(){
     var oDiv2 = $('<div class="cont-right"></div>')
     var values = $('.import-in').val();
     $(oDiv2).text(values);
@@ -120,14 +133,15 @@ $('.left-btn2').click(function(){
         </div>`;
         $('.cont-centen').append(content);
         };
-       
+        $('.chat-container').scrollTop(9999999999999999);
+         $('.left-btn2').removeAttr('style')
+        $('.left-btn2').attr('disabled','disabled');
         },
         failed: function (status) {
             alert('请求失败');
         }
     })
-    
-})
+}
 //自动回复
 function ajax(option){
     var xhr = new XMLHttpRequest();
@@ -151,4 +165,28 @@ function ajax(option){
         }
     }
 }
-
+//快捷回复
+$('.right-p1').click(function(){
+    $('.import-in').val('手机号查件')
+    fasong()
+});
+$('.right-p2').click(function(){
+    $('.import-in').val('附近网点在哪')
+    fasong()
+})
+$('.right-p3').click(function(){
+    $('.import-in').val('运费时效查询')
+    fasong()
+})
+$('.right-p4').click(function(){
+    $('.import-in').val('怎么申请电子发票')
+    fasong()
+})
+$('.right-p5').click(function(){
+    $('.import-in').val('怎么更改收方联系方式')
+    fasong()
+})
+$('.right-p6').click(function(){
+    $('.import-in').val('已发出快件如何转寄丶退回')
+    fasong()
+})
