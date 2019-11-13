@@ -1,0 +1,158 @@
+#footer{
+    min-width: 1280px;
+    border-top: 8px solid #dc1e32;
+    background: #000000;
+}
+#footer .footer_inner{
+    position: relative;
+    padding: 50px 0;  
+}
+#footer .list{
+    float: left;
+    border-right: 1px solid #333333;
+}
+#footer .list dl{
+    float: left;
+    margin-right: 50px;
+}
+#footer .list dt>a,#footer .right h4{
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 14px;
+}
+#footer .list dd>a{
+    color: #b1b1b1;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 12px;
+}
+#footer .list dd>a:hover{
+    color: #ffffff;
+}
+#footer .right{
+    float: left;
+    padding: 0 10px;
+    height: 250px;
+}
+#footer .right h4{
+    text-align: center;
+}
+#footer .right>div>a{
+    position: relative;
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+    margin: 0 6px 20px;
+    background: url(../img/index_img/lianXi.png) no-repeat;
+}
+#footer .right>div>a>img{
+    display: none;
+    height: 186px;
+    width: 186px;
+    position: absolute;
+    top: -200px;
+    left: -62px;
+}
+#footer .right>div>a:nth-of-type(4) img{
+    left: -64px;
+    top:-188px;
+}
+#footer .right>div>a .icon{
+    display: none;
+    position: absolute;
+    border: 16px solid rgba(0, 0, 0, 0);
+    border-top-color: #ffffff;
+    border-bottom: 0;
+    left: 14px;
+    top:-14px;
+}
+#footer .right>div>a:hover{
+    top: -2px;
+    background: url(../img/index_img/lianXi2.png) no-repeat;
+}
+#footer .right>div>a:hover .icon,#footer .right>div>a:hover img{
+    display: initial;
+}
+#footer .right>div>a:nth-of-type(2){
+    background-position:-80px 0px;
+}
+#footer .right>div>a:nth-of-type(3){
+    background-position:-158px 0px;
+}
+#footer .right>div>a:nth-of-type(4){
+    background-position:0px -80px;
+}
+#footer .f-nav{
+    min-width: 1280px;
+    background: #000000;
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+}
+#footer .f-nav ul{
+    padding:16px 0;
+}
+#footer .f-nav ul li{
+    float: left;
+    padding: 0 20px;
+}
+#footer .f-nav ul li a{
+    line-height: 36px;
+    padding: 0 10px;
+    color: #ffffff;
+}
+#footer .bottom{
+    min-width: 1280px;
+    background: #000000;
+    padding: 20px 0 70px;
+}
+#footer .fl,#footer .bottom .con-left li,#footer .bottom .gov li,#footer .bottom .con-right li{
+    float: left;
+}
+#footer .bottom a{
+    color: #b1b1b1;
+    font-size: 14px;
+    line-height: 16px;
+}
+#footer .bottom a:hover{
+    color: #ffffff;
+}
+#footer .bottom .con-left a{
+    padding: 0 8px;
+    border-left: 1px solid #b1b1b1;
+}
+#footer .bottom .con-left li:nth-of-type(1) a{
+    padding-left: 0;
+    border-left: 0;
+}
+#footer .bottom .gov{
+    margin-left: 200px;
+    position: relative;
+    top:-10px;
+}
+#footer .bottom .gov img{
+    height: 35px;
+    margin: 0 5px;
+}
+#footer .bottom .con-right,#footer .bottom .text-right{
+    float: right;
+}
+#footer .bottom .con-right .w-cursor1:hover{
+    color: #b1b1b1;
+}
+#footer .bottom .text-right{
+    margin-top: 15px;
+}
+#footer .goHeader{
+    /* display: none; */
+    /* position: fixed; */
+    width: 48px;
+    height: 48px;
+    background: url(../img/index_img/fanHui1.png);
+    z-index: 1000;
+    cursor: pointer;
+}
+#footer .goHeader:hover{
+    background: url(../img/index_img/fanHui2.png);
+
+}

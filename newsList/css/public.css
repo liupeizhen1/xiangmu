@@ -55,7 +55,6 @@ img{
     height: 100%;
     width: 256px;
     text-align: center;
-    position: relative;
 }
 .select p{
     font-size: 18px;
@@ -63,15 +62,16 @@ img{
     height: 100%;
     line-height: 90px;
     cursor: pointer;
+    position: relative;
 }
 .select p:hover{
     color:#dc1e32;
 }
 .select .type-down{
     width: 256px;
-    /* position: absolute; */
-    /* top: 100%; */
-    /* z-index: 99; */
+    position: absolute;
+    top: 100%;
+    z-index: 9999;
     background: #fff;
     border: 1px solid #e5e5e5;
     border-top: none;
@@ -113,4 +113,3 @@ img{
     height: 90px;
     line-height:90px;
 }
-
