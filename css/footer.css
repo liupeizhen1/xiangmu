@@ -2,6 +2,7 @@
     min-width: 1280px;
     border-top: 8px solid #dc1e32;
     background: #000000;
+    overflow:hidden;
 }
 #footer .footer_inner{
     position: relative;
@@ -44,7 +45,7 @@
     width: 58px;
     border-radius: 50%;
     margin: 0 6px 20px;
-    background: url(../img/index_img/lianXi.png) no-repeat;
+    background: url('../img/index_img/lianXi.png') no-repeat;
 }
 #footer .right>div>a>img{
     display: none;
@@ -69,7 +70,7 @@
 }
 #footer .right>div>a:hover{
     top: -2px;
-    background: url(../img/index_img/lianXi2.png) no-repeat;
+    background: url('../img/index_img/lianXi2.png') no-repeat;
 }
 #footer .right>div>a:hover .icon,#footer .right>div>a:hover img{
     display: initial;
@@ -148,11 +149,11 @@
     /* position: fixed; */
     width: 48px;
     height: 48px;
-    background: url(../img/index_img/fanHui1.png);
+    background: url('../img/index_img/fanHui1.png');
     z-index: 1000;
     cursor: pointer;
 }
 #footer .goHeader:hover{
-    background: url(../img/index_img/fanHui2.png);
+    background: url('../img/index_img/fanHui2.png');
 
 }
