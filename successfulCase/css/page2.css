@@ -1,0 +1,11 @@
+.btn-prev{
+    width: 19px;
+    height: 10px;
+    background: url(../img/1008.png) no-repeat;
+    position: relative;
+    top: -4px;
+}
+.btn-prev:hover{
+    background: url(../img/1009.png) no-repeat;
+
+}

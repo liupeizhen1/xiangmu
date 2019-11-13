@@ -3,6 +3,7 @@
     width: 1280px;
     margin: 0 auto;
     cursor: pointer;
+    overflow: hidden;
 }
 .w-cursor1{
     cursor: default;

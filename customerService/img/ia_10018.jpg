@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>ic-biaozhun_b</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.8%" y="-6.1%" width="105.6%" height="113.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.084522192 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="91.0744419%" y1="0%" x2="5.38721587%" y2="94.0848214%" id="linearGradient-2">
+            <stop stop-color="#898C8E" offset="0%"></stop>
+            <stop stop-color="#2A2A2A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="知道2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_list" transform="translate(-427.000000, -258.000000)" fill-rule="nonzero" fill="url(#linearGradient-2)">
+            <g id="Group-5" filter="url(#filter-1)" transform="translate(57.000000, 112.000000)">
+                <g id="快捷入口">
+                    <g id="警告" transform="translate(370.000000, 146.000000)">
+                        <path d="M57.4089532,48.375 L33.0602301,5.87499998 C32.4359039,4.62499996 31.1872514,4 29.9385989,4 C28.6899464,4 27.441294,4.62500001 26.8169678,5.87499998 L2.46824468,48.375 C1.84391844,49.625 1.84391844,50.875 2.46824468,52.125 C3.09257093,53.375 4.34122337,54 5.58987586,54 L54.287322,54 C55.8481376,54 56.7846269,53.375 57.4089532,52.125 C58.3454425,51.1875 58.0332794,49.625 57.4089532,48.375 Z M50.8177208,50 L9.18227919,50 C8.25014242,50 7.62871796,49.0526316 8.25014248,48.4210526 L29.0678632,11.4736842 C29.3785755,10.8421053 30.6214245,10.8421053 30.9321368,11.4736842 L51.7498575,48.4210526 C52.371282,49.0526316 51.7498575,49.9999999 50.8177208,50 Z" id="Shape"></path>
+                        <path d="M31,21 C31.9285714,21 33,22.02 33,24 L33,35 C33,36.98 31.9285714,38.0000001 31,38 C29.0714286,37.9999999 28,36.98 28,35 L28,24 C28,22.02 29.0714285,21 31,21 Z M30.5,45 C29.1192881,45 28,43.8807119 28,42.5 C28,41.1192881 29.1192881,40 30.5,40 C31.8807119,40 33,41.1192881 33,42.5 C33,43.8807119 31.8807119,45 30.5,45 Z" id="Combined-Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

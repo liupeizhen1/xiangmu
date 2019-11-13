@@ -1,0 +1,9 @@
+首页头部点 关于我们 连接 about_us/index.html
+ 
+尾部点 合作咨询 连接 about_us/hezuozixun.html
+
+
+
+
+
+关于我们首屏里也有合作咨询字样可以跳转
