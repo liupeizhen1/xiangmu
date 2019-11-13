@@ -11,7 +11,7 @@ import header from '../../js/header.js';
 header('../common/header.html');
 $('#footer').load('../common/footer.html');
 import footer from '../../js/footer.js'
-
+footer('../common/footer.html')
 
 // $('#login').click(function(){
 //     console.log(6);
