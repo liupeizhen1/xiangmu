@@ -14,8 +14,16 @@ var mySwiper = new Swiper('.swiper-container', {
     },
 })
 $('.el-tabs_header p span').click(function(){
-    $(this).addClass('active')
-    $(this).siblings().removeClass('active')
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
+    if($(this).text() == '手机自助'){
+        $('.expand-item').css('display','none');
+        $('.expand-code').css('display','block');
+    }else{
+        $('.expand-item').css('display','block');
+        $('.expand-code').css('display','none');
+    }
+    
 })   
 var rum = $('.el-tabs_content').height()
 $('.el-tab-pane').height(rum/1.9)   
