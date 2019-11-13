@@ -164,7 +164,6 @@ function heightAuto(dom) {// 统一元素高度
     $(dom).each(function (index, dom) {
         $(dom).height(maxHeight);
     });
-    console.log(maxHeight);
 };
 function widthAuto(dom) {//脱标的父元素宽度度自适应
     var width = 0;

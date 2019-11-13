@@ -8,6 +8,7 @@ body,html{
 	font:14px "微软雅黑",Arial;	/* 设置全局基础字号 */
 	color: #333333;
 }
+
 body::-webkit-scrollbar,html::-webkit-scrollbar{/*高宽分别对应横竖滚动条的尺寸*/
 	width: 5px;
 	height: 5px;
