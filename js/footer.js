@@ -17,24 +17,11 @@ function footer(path) {
 
         $(document).on('scroll',goHeaderFn);//滚动保持固定
 
-<<<<<<< HEAD
         $(window).on('resize',function(){//可视窗口大小改变时，重新赋值
             y1 = html.offsetHeight - $(finner).offset().top - goHeader.offsetHeight;
             st = html.offsetHeight - html.clientHeight;
             goHeaderFn();
         });
-=======
-
-
-            // if ($(goHeader).offset().top < maxY) {
-
-            //     $(goHeader).css('bottom', 0);
-            // } else {
-            //     $(goHeader).css('bottom', 'initail');
-
-            //     console.log($(goHeader).css('position'));
-            // }
->>>>>>> 1b21b7bdf0a8701da55e1fc29973f890746d7b1e
 
         function goHeaderFn() {//滚动保持固定
             var gap = st - html.scrollTop;
