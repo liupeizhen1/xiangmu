@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../css/wyjj.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <title>我要寄件</title>
+</head>
+
+<body>
+    <div id="header" class="clearfix container"></div>
+    <div class="l_main clearfix">
+        <!-- 导航部分 -->
+        <div class="l_ydzz_nav">
+            <a href="wyjj.html" class="l_hover">我要寄件</a>
+            <a href="ydzz.html">运单追踪</a>
+            <a href="##">服务支持</a>
+        </div>
+        <!-- 主体部分 -->
+        <div class="l_wyjj_warp clearfix">
+            <div class="l_wyjj_nav">
+                <a href="##" class="l_a_active">寄快递</a>
+                <a href="##">寄大件(20kg+)</a>
+                <a href="##">二维码寄件</a>
+            </div>
+            <!-- 第一个模块 -->
+            <div class="l_wyjj_content clearfix">
+                <div class="l_wyjj_step">
+                    <ul class="clearfix">
+                        <li class="l_li_active" code='li1'>
+                            <strong>01</strong>
+                            <i></i>
+                            <p>寄件人信息</p>
+                        </li>
+                        <li code='li2'>
+                            <strong>02</strong><i></i>
+                            <p>收件人信息</p>
+                        </li>
+                        <li code='li3'>
+                            <strong>03</strong><i></i>
+                            <p>预约信息</p>
+                        </li>
+                        <li code='li4'>
+                            <strong>04</strong><i></i>
+                            <p>完成下单</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 寄方信息 -->
+                <div class="l_send">
+                    <div class="l_mesg">
+                        <div class="l_m_left">
+                            <span>寄方信息</span>
+                            <i>标*为必填项</i>
+                        </div>
+                        <div class="l_m_right">
+                            <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                            <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                        </div>
+                    </div>
+                    <div class="l_inp_msg">
+                        <div class="l_inp_left">
+                            <div class="l_inp_t"><b>*</b>
+                                姓名</div>
+                            <input type="text" name="name" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                            <div class="l_popup" code="ipt1">
+                                <i></i>
+                                这是必填字段
+                            </div>
+                        </div>
+                        <div class="l_inp_right">
+                            <div class="l_inp_t">公司名称</div>
+                            <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                        </div>
+                    </div>
+                    <div class="l_inp_msg">
+                        <div class="l_inp_left">
+                            <div class="l_inp_t">手机号码</div>
+                            <input type="text" name="phone" class="l_wyjj_inp" placeholder="请填写手机号码">
+                            <div class="l_popup" style="bottom: -62px;" code="ipt2">
+                                <i></i>
+                                手机号码、固话号码请至少填一项
+                            </div>
+                        </div>
+                        <div class="l_inp_right">
+                            <div class="l_inp_t">固话</div>
+                            <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                        </div>
+                    </div>
+                    <div class="l_inp_msg">
+                        <div class="l_inp_only">
+                            <div class="l_inp_t"><b>*</b> 省市区</div>
+                            <input type="text" name="city" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                            <a href="##" class="iconfont icondidian"></a>
+                            <div class="l_popup" code="ipt3">
+                                <i></i>
+                                这是必填字段
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_inp_msg">
+                        <div class="l_inp_only">
+                            <div class="l_inp_t"><b>*</b> 详细地址</div>
+                            <input type="text" name="adress" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                            <div class="l_popup" code="ipt4">
+                                <i></i>
+                                这是必填字段
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_next_btn">
+                        <span>下一步 <i class="iconfont iconyoujiantou"></i> </span>
+                    </div>
+                </div>
+                <!-- 收方信息 -->
+                <div class="l_take">
+                    <div class="l_take_msg1">
+                        <div class="l_mesg clearfix">
+                            <div class="l_m_left">
+                                <!-- <b class="delete iconfont iconshanchu"></b> -->
+                                <span>收方信息</span>
+                                <span class="r-index">- <strong class="l_take_num">1</strong></span>
+                                <i>标*为必填项</i>
+                            </div>
+                            <div class="l_m_right">
+                                <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                                <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t"><b>*</b>
+                                    姓名</div>
+                                <input type="text" name="name1" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                                <div class="l_popup" code="ipt1">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">公司名称</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t">手机号码</div>
+                                <input type="text" name="phone1" class="l_wyjj_inp" placeholder="请填写手机号码">
+                                <div class="l_popup" style="bottom: -62px;" code="ipt2">
+                                    <i></i>
+                                    手机号码、固话号码请至少填一项
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">固话</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 省市区</div>
+                                <input type="text" name="city1" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                                <a href="##" class="iconfont icondidian"></a>
+                                <div class="l_popup" code="ipt3">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 详细地址</div>
+                                <input type="text" name="adress1" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                                <div class="l_popup" code="ipt4">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_addorsave clearfix">
+                        <div class="l_add">
+                            <div class="l_add_top">
+                                <strong>+</strong>
+                                多个收件人
+                            </div>
+                            <div class="l_add_list">
+                                <ul>
+                                    <li class="add"><a href="##">添加一个收件人</a></li>
+                                    <li class="adress_add"><a href="##">从地址簿添加</a></li>
+                                    <li style="border-bottom:none;" class="excel"><a href="##">从Excel表格添加</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="l_save">
+                            <i class="iconfont icongou"></i>
+                            保存到地址簿
+                        </div>
+                    </div>
+
+                    <div class="l_next_btn clearfix">
+                        <button class="l_last_step">上一步</button>
+                        <span>下一步 <i class="iconfont iconyoujiantou"></i> </span>
+                    </div>
+                </div>
+                <!-- 预约信息 -->
+                <div class="l_reserve clearfix">
+                    <div class="reserve_top clearfix">
+                        <h3>预约信息</h3>
+                        <p>
+                            <a href="##">
+                                <i>
+                                    <b class="l_circle"></b>
+                                </i>
+                                <span>快递员上门取件</span>
+                            </a>
+                            <a href="##">
+                                <i>
+                                    <b></b>
+                                </i>
+                                <span>自行联系快递员或自寄</span>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="reserve_con">
+                        <div class="l_on_door">
+                            <label><b style="color:#dc1e32">*</b> 上门时间：</label>
+                            <div class="on_door_time">
+                                <span class="one_hour">一小时内</span>
+                                <div class="time_list">
+                                    <ul class="time_top">
+                                        <li class="li_active">
+                                            <p time="today" code="day">今天</p>
+                                            <p day="today" sign='sign'></p>
+                                        </li>
+                                        <li>
+                                            <p time="tomorrow" code="day">明天</p>
+                                            <p day="tomorrow" sign='sign'></p>
+                                        </li>
+                                        <li>
+                                            <p time="after_tomorrow" code="day">后天</p>
+                                            <p day="after_tomorrow" sign='sign'></p>
+                                        </li>
+                                    </ul>
+                                    <ul class="time_bot">
+                                        <!-- <li>
+                                            <b class="b_active">08:00~09:00</b>
+                                        </li>
+                                        <li>
+                                            <b>08:00~09:00</b>
+                                        </li>
+                                        <li>
+                                            <b>08:00~09:00</b>
+                                        </li>
+                                        <li>
+                                            <b>08:00~09:00</b>
+                                        </li>
+                                        <li>
+                                            <b>08:00~09:00</b>
+                                        </li>
+                                        <li>
+                                            <b>08:00~09:00</b>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="l_title">
+                                下单后可打印电子运单二维码，向收派员或到顺丰服务点出示二维码，扫码后快速寄件
+                            </p>
+                        </div>
+                        <div class="l_product">
+                            <label><b style="color:#dc1e32">*</b> 快递产品：</label>
+                            <div class="l_wrapper">
+                                <ul class="clearfix">
+                                    <li>
+                                        <a href="##" class="l_active">
+                                            <span class="l_icon iconfont icongou"></span>
+                                            <span class="l_semicircle">
+
+                                            </span>
+
+                                            <dl>
+                                                <dt>
+                                                    <span class="money_fh">￥</span>
+                                                    <span class="l_price">12</span>
+                                                    <span class="l_last">起</span>
+                                                </dt>
+                                                <dd>
+                                                    预计 周一 18：00 前
+                                                </dd>
+                                            </dl>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="l_send_msg">
+                            <label>捎话给快递员</label>
+                            <div class="on_msg">
+                                无
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_read_clause">
+                        <p><i class="iconfont icongou"></i>
+                            我同意<a href="##">《电子运单契约条款》</a>
+                        </p>
+                    </div>
+                    <div class="l_next_btn">
+                        <button class="l_last_step">上一步</button>
+                        <span>下一步 <i class="iconfont iconyoujiantou"></i> </span>
+                    </div>
+                </div>
+            </div>
+            <!-- 第二个模块 -->
+            <div class="second">
+                <div class="l_big_content">
+                    <h2>
+                        <a href="##"><img src="../img/l_banner2.png" alt=""></a>
+                    </h2>
+                    <div class="l_send">
+                        <div class="l_mesg">
+                            <div class="l_m_left">
+                                <span>寄方信息</span>
+                                <i>标*为必填项</i>
+                            </div>
+                            <div class="l_m_right">
+                                <span><i class="iconfont iconjisuanqi"></i> 价格计算</span>
+                                <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                                <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t"><b>*</b>
+                                    姓名</div>
+                                <input type="text" name="name" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                                <div class="l_popup" code="ipt1">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">公司名称</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t">手机号码</div>
+                                <input type="text" name="phone" class="l_wyjj_inp" placeholder="请填写手机号码">
+                                <div class="l_popup" style="bottom: -62px;" code="ipt2">
+                                    <i></i>
+                                    手机号码、固话号码请至少填一项
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">固话</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 省市区</div>
+                                <input type="text" name="city" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                                <a href="##" class="iconfont icondidian"></a>
+                                <div class="l_popup" code="ipt3">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 详细地址</div>
+                                <input type="text" name="adress1" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                                <div class="l_popup" code="ipt4">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_take">
+                        <div class="l_mesg">
+                            <div class="l_m_left">
+                                <span>收方信息</span>
+                                <i>标*为必填项</i>
+                            </div>
+                            <div class="l_m_right">
+                                <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                                <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t"><b>*</b>
+                                    姓名</div>
+                                <input type="text" name="take_name" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                                <div class="l_popup" code="take_ipt1">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">公司名称</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t">手机号码</div>
+                                <input type="text" name="take_phone" class="l_wyjj_inp" placeholder="请填写手机号码">
+                                <div class="l_popup" style="bottom: -62px;" code="take_ipt2">
+                                    <i></i>
+                                    手机号码、固话号码请至少填一项
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">固话</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 省市区</div>
+                                <input type="text" name="take_city" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                                <div class="l_popup" code="take_ipt3">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg" style="margin-bottom: 0;">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 详细地址</div>
+                                <input type="text" name="take_adress" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                                <div class="l_popup" code="take_ipt4">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_save_adress">
+                        <span><i class="iconfont icongou"></i> 保存到地址簿</span>
+                    </div>
+                    <div class="l_read_clause">
+                        <p><i class="iconfont icongou"></i>
+                            我同意<a href="##">《电子运单契约条款》</a>
+                        </p>
+                    </div>
+                    <div class="l_place_order">
+                        <button class="l_order_btn l_disable">下单</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 第三个模块 -->
+            <div class="l_ewmjj">
+                <div class="first">
+                    <h3>有扫码寄件<a href="##">纸质运单<i class="iconfont iconwenhao"></i></a></h3>
+                    <ul class="l_number">
+                        <li>
+                            <span>01</span>
+                            <p>输入纸质二维码上的运单号</p>
+                        </li>
+                        <li>
+                            <span>02</span>
+                            <p>填写寄件信息</p>
+                        </li>
+                        <li>
+                            <span>03</span>
+                            <p>将包裹与二维码交给收派员</p>
+                        </li>
+                    </ul>
+                    <div class="l_import_odd clearfix">
+                        <input type="text" class="l_odd_inp" placeholder="请输入运单号以开始">
+                        <input type="button" class="l_odd_btn" value="下一步">
+                    </div>
+                    <div class="ewm_title" style="color: #dc1e32;">*请输入SF 12位或15位单号</div>
+                    <p class="l_tip">温馨提示：此方式下单不会通知快递员上门取件。如需快递员及时上门收件，请使用“寄快递”下单或联系快递员。</p>
+                </div>
+                <div class="l_big_content" style="display: none;">
+                    <p class="order_number">
+                        订单号 ： <span class="number1"></span>
+                    </p>
+                    <div class="l_send">
+                        <div class="l_mesg">
+                            <div class="l_m_left">
+                                <span>寄方信息</span>
+                                <i>标*为必填项</i>
+                            </div>
+                            <div class="l_m_right">
+                                <span><i class="iconfont iconjisuanqi"></i> 价格计算</span>
+                                <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                                <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t"><b>*</b>
+                                    姓名</div>
+                                <input type="text" name="name" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                                <div class="l_popup" code="ipt1">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">公司名称</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t">手机号码</div>
+                                <input type="text" name="phone" class="l_wyjj_inp" placeholder="请填写手机号码">
+                                <div class="l_popup" style="bottom: -62px;" code="ipt2">
+                                    <i></i>
+                                    手机号码、固话号码请至少填一项
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">固话</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 省市区</div>
+                                <input type="text" name="city" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                                <a href="##" class="iconfont icondidian"></a>
+                                <div class="l_popup" code="ipt3">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 详细地址</div>
+                                <input type="text" name="adress1" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                                <div class="l_popup" code="ipt4">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_take">
+                        <div class="l_mesg">
+                            <div class="l_m_left">
+                                <span>收方信息</span>
+                                <i>标*为必填项</i>
+                            </div>
+                            <div class="l_m_right">
+                                <span><i class="iconfont icondizhibu1"></i> 使用地址簿</span>
+                                <span><i class="iconfont icontianxie"></i> 智能地址填写</span>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t"><b>*</b>
+                                    姓名</div>
+                                <input type="text" name="take_name" class="l_wyjj_inp" placeholder="请填写联系人姓名">
+                                <div class="l_popup" code="take_ipt1">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">公司名称</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写公司名称">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_left">
+                                <div class="l_inp_t">手机号码</div>
+                                <input type="text" name="take_phone" class="l_wyjj_inp" placeholder="请填写手机号码">
+                                <div class="l_popup" style="bottom: -62px;" code="take_ipt2">
+                                    <i></i>
+                                    手机号码、固话号码请至少填一项
+                                </div>
+                            </div>
+                            <div class="l_inp_right">
+                                <div class="l_inp_t">固话</div>
+                                <input type="text" class="l_wyjj_inp" placeholder="请填写固话号码">
+                            </div>
+                        </div>
+                        <div class="l_inp_msg">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 省市区</div>
+                                <input type="text" name="take_city" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请选择所在地区，例如：广东省-深圳市-福田区">
+                                <div class="l_popup" code="take_ipt3">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l_inp_msg" style="margin-bottom: 0;">
+                            <div class="l_inp_only">
+                                <div class="l_inp_t"><b>*</b> 详细地址</div>
+                                <input type="text" name="take_adress" class="l_wyjj_inp l_wyjj_inp_len" placeholder="请填写所在街道以及详细地址">
+                                <div class="l_popup" code="take_ipt4">
+                                    <i></i>
+                                    这是必填字段
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l_save_adress">
+                        <span><i class="iconfont icongou"></i> 保存到地址簿</span>
+                    </div>
+                    <div class="l_read_clause">
+                        <p><i class="iconfont icongou"></i>
+                            我同意<a href="##">《电子运单契约条款》</a>
+                        </p>
+                    </div>
+                    <div class="l_place_order">
+                        <button class="l_order_btn l_disable">下单</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="clearfix"></div>
+    <div class="l_tolead">
+
+    </div>
+    <div class="tolead_box">
+        <h2>
+            <strong>从excel文件导入收件人</strong>
+            <span>x</span>
+        </h2>
+        <div class="tolead_mid">
+            <div class="to_input">
+                <input type="text" class="mid_input" disabled>
+                <input type="button" class="mid_btn" value="选择文件">
+                <input type="file" class="mid_file" accept=".xls,.xlsx">
+            </div>
+            <div class="mid_bot">
+                <a href="../收件人模板.xlsx" download="收件人模板.xlsx">excel模板</a>
+                <button>上传</button>
+            </div>
+            <div class="tolead_bot">
+                更多个性化批量下单需求，请下载速打:
+                <a href="http://www.foonsu.com/Product" target="_blank">http://www.foonsu.com/Product</a>
+            </div>
+        </div>
+    </div>
+    <div class="remarks">
+        <h2>
+            <strong>备注信息</strong>
+            <span>x</span>
+        </h2>
+        <div class="remarks_con">
+            <div class="contents">
+                <div class="inner">
+                    <h5>备注选项</h5>
+                    <ul>
+                        <li><a href="##">带文件封</a></li>
+                        <li><a href="##">带包装袋</a></li>
+                        <li><a href="##">带纸箱</a></li>
+                        <li><a href="##">要爬楼</a></li>
+                        <li><a href="##">来前请联系</a></li>
+                    </ul>
+                    <form><input type="text" class="remarks_msg" placeholder="其他想对小哥说的话（如：物品体积较大）"></form>
+                    <div class="save"><button>保存</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="hint">
+            <p>最多可选择3项</p>
+        </div>
+    </div>
+
+
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script type="module" src="../js/wyjj.js"></script>
+</body>
+
+</html>

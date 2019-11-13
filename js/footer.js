@@ -16,7 +16,6 @@ function footer(path) {
 
             $(goHeader).css({'bottom': 0,'right': gapX})
 
-            console.log(666);
 
 
             // if ($(goHeader).offset().top < maxY) {
