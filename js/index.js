@@ -87,12 +87,16 @@ footer('./common/footer.html');//执行底部脚本
     $.ajax({
         type: 'get',
         url: './data/index.json',
-        async:false,
+        async: true,
         data: '请求顺丰全业务介绍模块数据',
         cache: true,
         dataType: 'json',
         success: function (json) {
             resource = json['business'];
+            // 初始化加载内容
+            addWrap(Object.keys(resource)[0]);//加载默认资源模块
+            // 自动跳转功能
+            addtimer();
         },
         error: function (err) {
             console.log(err, '请求失败');
@@ -157,19 +161,13 @@ footer('./common/footer.html');//执行底部脚本
         });
     };
 
-    // 初始化加载内容
-    addWrap(Object.keys(resource)[0]);//加载默认资源模块
-
-    // 自动跳转功能
-    addtimer();
-
     //点击跳转功能
     $('.w-business .click').on('click', 'span', function () {
         var index = $(this).index();
         var gap = $('.w-business .wrap').eq(index).position().left;
 
         // 停止
-        $('.w-banner>img').stop();
+        $('.w-business .wrap').stop();
         clearInterval(timer);
         timer = setInterval(lunBo, 4000);//启动定时器
         if ($(this).hasClass('active')) {
@@ -189,7 +187,7 @@ footer('./common/footer.html');//执行底部脚本
         $('.w-business .click .active').prependTo($('.w-business .click'));
 
         // 清除动画和计时器
-        $('.w-banner>img').stop();
+        $('.w-business .wrap').stop();
         clearInterval(timer);
 
 
