@@ -430,3 +430,14 @@ body {
    float: right;
    width: 100%;
 }
+.expand-code{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    display: none;
+    margin-top:25%;
+}
+.expand-code img{
+   width: 100%;
+}
