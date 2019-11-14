@@ -207,11 +207,13 @@ function randomWord(num, len) {// 随机产生num位验证码,len为取值范围
     };
     return str;
 };
+//显示登录的
 function onLogin() {
     $('#login').html(loginDom);//加载登录模块
     loginInit();//初始化登录框状态
     $('#login').stop(true, true).fadeIn(400, () => { $('#header .mengBan').css("display", "block") });
 }
+
 // login html结构
 var loginDom = `<a class="del" href="###">×</a>
 <div class="title">

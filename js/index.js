@@ -19,6 +19,7 @@ footer('./common/footer.html');//执行底部脚本
 // banner图模块
 (function () {
     //初始化
+    $('.w-banner>img').attr('draggable', 'false');
     var b_width = $('.w-banner').width();
     $('.w-banner>img').each(function (index, img) {
         $(img).css('left', b_width * index);
@@ -75,25 +76,27 @@ footer('./common/footer.html');//执行底部脚本
         });
         item++;
     };
-    // dragFn($('.w-banner>img'))
-    function dragFn(dom) {//函数拖拽功能
-        $(dom).off('mousedown');
-        $(dom).mousedown(function (e) {
-            e.stopPropagation();
-            $(dom).stop();
-            var toLeft = e.pageX - $(dom).position().left;
-            var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
-            $(document).bind('mousemove', function (e) {
-                var x = e.clientX - toLeft;
-                dom.css({ 'left': x });
-            })
-            $(document).mouseup(function () {
-                $(dom).animate({ left: 0 }, 1500)
-                $(this).unbind('mousemove');
-                $(document).off('mouseup')
-            });
-        });
-    };
+
+    // 拖拽未完成
+    // dragFn($('.w-banner'))
+    // // dragFn($('.w-banner img'))
+    // function dragFn(dom) {//函数拖拽功能
+    //     $(dom).off('mousedown');
+    //     $(dom).mousedown(function (e) {
+    //         $(dom).stop();
+    //         var toLeft = e.pageX - $('.w-banner img').position().left;
+    //         var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+    //         $(document).bind('mousemove', function (e) {
+    //             var x = e.clientX - toLeft;
+    //             $('.w-banner img').css({ 'left': x });
+    //         })
+    //         $(document).mouseup(function () {
+    //             $(dom).animate({ left: 0 }, 1500)
+    //             $(this).unbind('mousemove');
+    //             $(document).off('mouseup')
+    //         });
+    //     });
+    // };
 
     // 温馨提示
     $('.w-banner .right li').hover(
@@ -119,11 +122,15 @@ footer('./common/footer.html');//执行底部脚本
     $('.w-nav .caDan').on('click', '.click', function (e) { clickFn(e) });
 
     $(document).unbind('click');
-    $(document).bind('click', function (e) {
-        $('.w-nav .caDan .click').fadeIn(50);
-        $('.w-nav .caDan span').fadeOut(50);
-        $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
-    });
+    addDocumentClick()
+    function addDocumentClick() {
+        $(document).bind('click', function (e) {
+            $('.w-nav .caDan .click').fadeIn(50);
+            $('.w-nav .caDan span').fadeOut(50);
+            $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
+        });
+    };
+
     // 输入功能
     $('.w-nav .caDan .txt input').on('change', function (e) {
         var num = this.value.trim().replace(',', '');
@@ -144,11 +151,13 @@ footer('./common/footer.html');//执行底部脚本
             var hint = '<div class="hint">*运单号错误或重复。</div>'
             $('.w-nav .caDan .top').after(hint);
         }
+        // 插入节点
+        $('.w-nav .caDan .txt input').before(text);
         if ($('.w-nav .caDan .cuo').length) {
+            
             $('.w-nav .caDan .btn').addClass('jin');
             $('.w-nav .caDan .btn').removeClass('btn');
         }
-        $('.w-nav .caDan .txt input').before(text);
         // input宽度自适应
         var width = this.offsetWidth - $('.w-nav .caDan .txt .number:last')[0].offsetWidth - 14;
         if (width < 40) {
@@ -174,6 +183,7 @@ footer('./common/footer.html');//执行底部脚本
     });
     // 删除功能
     $('.w-nav .caDan .txt').on('click', '.del', function (e) {
+        e.stopPropagation();
         $('.w-nav .caDan .txt input').focus();
         this.parentNode.remove();
         if (!$('.w-nav .caDan .cuo').length) {
@@ -181,8 +191,10 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-nav .caDan .jin').removeClass('jin');
             $('.w-nav .caDan .hint').remove();
         }
-        if (!$('.w-nav .caDan .txt .num'))
+        if (!$('.w-nav .caDan .txt .num').length) {
             $('.w-nav .caDan .txt input')[0].placeholder = '您可以输运单号查询';
+            addDocumentClick();
+        }
     });
     // 激活状态
     $('.w-nav .caDan .txt').on('click', '.number', function (e) {
@@ -357,24 +369,30 @@ footer('./common/footer.html');//执行底部脚本
     );
     // 拖拽功能
 
-
+    var bln = false;
     dragFn($('.w-anli .list'));
     function dragFn(dom) {//函数拖拽功能
-        $(dom).off('mousedown');
-        $(dom).mousedown(function (e) {
-            e.stopPropagation();
+        $(dom).unbind('mousedown');
+        $(dom).bind('mousedown', function (e) {
+            bln = true;
             $(dom).stop();
-            var toLeft = e.pageX - $(dom).position().left;
+            $('.w-anli .list a').attr('onclick', 'return' + bln)
+            $('.w-anli .list a').attr('draggable', 'false');
+            $('.w-anli .list img').attr('draggable', 'false');
+            var toLeft = e.pageX - $('.w-anli .list').position().left;
             var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+
+            $(document).unbind('mousemove');
             $(document).bind('mousemove', function (e) {
                 var x = e.clientX - toLeft;
-                dom.css({ 'left': x });
+                $(dom).css({ 'left': x });
+                $('.w-anli .list a').attr('onclick', 'return false')
             })
-            $(document).mouseup(function () {
-                $(dom).animate({ left: 0 }, 1500)
-                $(this).unbind('mousemove');
-                $(document).off('mouseup')
-            });
+        });
+        $(document).unbind('mouseup');
+        $(document).mouseup(function (e) {
+            $(document).unbind('mousemove');
+            $('.w-anli .list').animate({ left: 0 }, 1500)
         });
     };
 })();
