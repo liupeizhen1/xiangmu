@@ -118,6 +118,7 @@ footer('./common/footer.html');//执行底部脚本
         $('.w-nav .caDan .txt').animate({ height: 120, width: 306 }, 100);
         $('.w-nav .caDan .txt input').focus();
     }
+    // 注册事件
     $('.w-nav .caDan').on('click', '.txt', function (e) { clickFn(e) });
     $('.w-nav .caDan').on('click', '.click', function (e) { clickFn(e) });
 
@@ -128,6 +129,9 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-nav .caDan .click').fadeIn(50);
             $('.w-nav .caDan span').fadeOut(50);
             $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
+            $('.w-nav .caDan').removeAttr('style');
+            $('.w-nav .caDan').find('*').removeAttr('style');
+            console.log($('.w-nav .caDan .top'));
         });
     };
 
@@ -139,7 +143,9 @@ footer('./common/footer.html');//执行底部脚本
         var reg = /^\d{12}$/;
         var text = `<div class="number cuo"><b>${num}</b><a class="del">×</a></div>`;
         this.focus();
+        // 注销事件
         $(document).unbind('click');
+        $('.w-nav .caDan').unbind('click');
         // 订单号验证
         var arr = [];
         $('.w-nav .caDan .dui>b').each(function (i, dom) {
@@ -150,11 +156,17 @@ footer('./common/footer.html');//执行底部脚本
         } else if (!$('.w-nav .caDan .hint').length) {
             var hint = '<div class="hint">*运单号错误或重复。</div>'
             $('.w-nav .caDan .top').after(hint);
-        }
+        };
+        if($('.w-nav .caDan .txt .number').length >=21){
+            alert('最多可查询20条');
+            return false
+        };
+        console.log($('.w-nav .caDan .txt .number').length);
+        
         // 插入节点
         $('.w-nav .caDan .txt input').before(text);
+        // 判断是否符合条件可以提交
         if (!$('.w-nav .caDan .cuo').length) {
-
             $('.w-nav .caDan .btn').addClass('jin');
             $('.w-nav .caDan .btn').removeClass('btn');
         }
@@ -192,12 +204,13 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-nav .caDan .hint').remove();
         }
         if (!$('.w-nav .caDan .txt .number').length) {
-
             $('.w-nav .caDan .txt input')[0].placeholder = '您可以输运单号查询';
             addDocumentClick();
+            // 注册事件
+            $('.w-nav .caDan').on('click', '.txt', function (e) { clickFn(e) });
+            $('.w-nav .caDan').on('click', '.click', function (e) { clickFn(e) });
         }
-        console.log();
-        
+
     });
     // 激活状态
     $('.w-nav .caDan .txt').on('click', '.number', function (e) {
