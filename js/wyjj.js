@@ -4,8 +4,8 @@ import footer from './footer.js';//引入底部js
 
 header('../common/header.html');//执行底部脚本
 footer('../common/footer.html');//执行底部脚本
-var timer = setInterval(function () {
 
+var timer = setInterval(function () {
     if ($('#header .nav>ul>li>a,.logo h1 a').length >= 9) {
         $('.logo h1 a').attr('href', '../index.html');
         $('.nav ul li[class=shouye] a').attr('href', '../index.html');
@@ -16,7 +16,7 @@ var timer = setInterval(function () {
         $('.list dl dd[class=ydzz] a').attr('href', 'ydzz.html');
         clearInterval(timer);
     }
-}, 10)
+}, 100)
 
 $(function () {
     // 切换nav

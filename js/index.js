@@ -147,14 +147,14 @@ footer('./common/footer.html');//执行底部脚本
         });
         if (reg.test(num * 1) && !arr.includes(num) && !arr.includes(num * 1)) {
             text = `<div class="number dui"><b>${num}</b><a class="del">×</a></div>`;
-        } else {
+        } else if (!$('.w-nav .caDan .hint').length) {
             var hint = '<div class="hint">*运单号错误或重复。</div>'
             $('.w-nav .caDan .top').after(hint);
         }
         // 插入节点
         $('.w-nav .caDan .txt input').before(text);
-        if ($('.w-nav .caDan .cuo').length) {
-            
+        if (!$('.w-nav .caDan .cuo').length) {
+
             $('.w-nav .caDan .btn').addClass('jin');
             $('.w-nav .caDan .btn').removeClass('btn');
         }
@@ -191,10 +191,13 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-nav .caDan .jin').removeClass('jin');
             $('.w-nav .caDan .hint').remove();
         }
-        if (!$('.w-nav .caDan .txt .num').length) {
+        if (!$('.w-nav .caDan .txt .number').length) {
+
             $('.w-nav .caDan .txt input')[0].placeholder = '您可以输运单号查询';
             addDocumentClick();
         }
+        console.log();
+        
     });
     // 激活状态
     $('.w-nav .caDan .txt').on('click', '.number', function (e) {
