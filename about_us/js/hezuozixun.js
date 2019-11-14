@@ -19,7 +19,6 @@ $('.zheng-img').click(function () {
 });
 // 验证输入框是否有内容
 $('.subcladd .text').focus(function () {
-    $(this).parent().css({ 'background': '#f1f1f1' });
     $(this).parent().next().css('display', 'none');
     $(this).blur(function () {
         var sum = $(this);
@@ -29,7 +28,7 @@ $('.subcladd .text').focus(function () {
             if ($(this).parent().prev().children().text().indexOf('*') == -1) {
             }else{
                 $(this).parent().next().css('display', 'inline-block');
-                $(this).parent().css({ 'background': 'pink', 'opacity': '0.5' })
+                $(this).parent().addClass('s-prompt');
             }      
         }
     })
