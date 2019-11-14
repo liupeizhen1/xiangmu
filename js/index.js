@@ -5,6 +5,18 @@ header('./common/header.html');//执行底部脚本
 footer('./common/footer.html');//执行底部脚本
 
 
+// 在线客服
+(function () {
+    var html = document.documentElement;
+    var k_height = html.clientHeight;
+    $('.w-kefu').css('bottom', k_height / 7);
+    $(window).on('resize', e => {
+        var k_height = html.clientHeight;
+        console.log(666);
+        $('.w-kefu').css('bottom', k_height / 7);
+    });
+})();
+
 // banner图模块
 (function () {
     //初始化
@@ -23,9 +35,6 @@ footer('./common/footer.html');//执行底部脚本
     $(window).on('resize', e => {//窗口大小变动，重新初始化
         $('.w-banner>img').stop(true, true);
         b_width = $('.w-banner').width();
-        $('.w-banner>img').each(function (index, img) {
-            $(img).css('left', b_width * index);
-        });
         clearInterval(timer);
         timer = setInterval(lunBo, time);
     });
@@ -79,9 +88,31 @@ footer('./common/footer.html');//执行底部脚本
     );
 })();
 
+// 页面中间服务导航 
+(function () {
+    $('.w-nav .caDan .txt input').on({
+        'click': function (e) {
+            e.stopPropagation()
+            var height = $('.w-nav .caDan .txt').height();
+            if (height <= 40) {
+                $('.w-nav .caDan .click').fadeOut(50);
+                $('.w-nav .caDan span').fadeIn(50);
+                $('.w-nav .caDan .txt').animate({ height: 120, width: 306 }, 300)
+            };
+        },
+        'blur': function () {
+            // alert(666)
+        }
+    });
+    $(document).bind('click', function (e) {
+        $('.w-nav .caDan .click').fadeIn(50);
+        $('.w-nav .caDan span').fadeOut(50);
+        $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 300)
+    })
+})();
+
 // 顺丰全业务介绍 模块
 (function () {
-
     // 资源
     var resource = null;
     $.ajax({
