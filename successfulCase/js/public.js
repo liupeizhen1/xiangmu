@@ -16,8 +16,10 @@ footer('../common/footer.html')
 // $('#login').click(function(){
 //     console.log(6);
 var timer = setTimeout(function(){
-    if($('.nav>ul>li>a').attr('href').indexOf('./') >= 0){
-        $('.nav>ul>li>a').attr('href','../index.html')
+    if($('.shouye').attr('href').indexOf('./') >= 0){
+        $('.shouye').attr('href','../index.html')
+        $('.nav .guanyu').attr('href','../about_us/index.html')
+        $('.chenggong').attr('href','./index.html')
     }
 },1000)   
 // })
