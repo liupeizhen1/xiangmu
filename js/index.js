@@ -151,11 +151,13 @@ footer('./common/footer.html');//执行底部脚本
             var hint = '<div class="hint">*运单号错误或重复。</div>'
             $('.w-nav .caDan .top').after(hint);
         }
+        // 插入节点
+        $('.w-nav .caDan .txt input').before(text);
         if ($('.w-nav .caDan .cuo').length) {
+            
             $('.w-nav .caDan .btn').addClass('jin');
             $('.w-nav .caDan .btn').removeClass('btn');
         }
-        $('.w-nav .caDan .txt input').before(text);
         // input宽度自适应
         var width = this.offsetWidth - $('.w-nav .caDan .txt .number:last')[0].offsetWidth - 14;
         if (width < 40) {
