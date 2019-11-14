@@ -4,25 +4,31 @@ import footer from './footer.js';//引入底部js
 
 header('../common/header.html');//执行底部脚本
 footer('../common/footer.html');//执行底部脚本
-// async function daSomeThing(){
-//     $('#header').load('../common/header.html');
-//     var res1 = await new Promise(function (resolve,reject){
-//         $('#footer').load('../common/footer.html');
-//     });
-//     res1();
-//     $('.l_reserve .l_next_btn span').click(function () {
-//         $('.w-position').css({
-//             display: 'block'
-//         });
-//         $('.mengBan').css({
-//             display: 'block'
-//         });
-//     })
-    
-// }
-// daSomeThing();
+var timer = setInterval(function(){
+    if($('.logo h1 a').length){
+        $('.logo h1 a').attr('href','../index.html');       
+    } 
+    if($('.nav li[class=shouye] a').length){
+        $('.nav li[class=shouye] a').attr('href','../index.html');
+    }
+    if($('.con4 ul li[class=wyjj] a').length){
+        $('.con4 ul li[class=wyjj] a').attr('href','wyjj.html');
+    }
+    if($('.right dl dt a[class=wyjj]').length){
+        $('.right dl dt a[class=wyjj]').attr('href','wyjj.html');
+    }
+    if($('.con4 ul li[class=ydzz] a').length){
+        $('.con4 ul li[class=ydzz] a').attr('href','ydzz.html');
+    }
+    if($('.list dl dd[class=wyjj] a').length){
+        $('.list dl dd[class=wyjj] a').attr('href','wyjj.html');
+    }
+    if($('.list dl dd[class=ydzz] a').length){
+        $('.list dl dd[class=ydzz] a').attr('href','ydzz.html');
+        clearInterval(timer);
 
-
+    }
+},0)
 
 $(function () {
     

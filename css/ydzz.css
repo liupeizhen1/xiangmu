@@ -137,6 +137,7 @@
     height:27px;
     line-height: 27px;
     vertical-align: top;
+    text-align: left;
 }
 /* 输入正确的样式 */
 .l_suc_style{
@@ -163,6 +164,7 @@
 /* 输入失败的样式 */
 .l_err_style{
     border-bottom:1px dotted #de1e32;
+    border-top:1px solid #f2f2f2;
 }
 .l_inp_hint{
     margin-left: 141px;

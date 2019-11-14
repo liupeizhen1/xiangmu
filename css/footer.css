@@ -3,7 +3,6 @@
     min-width: 1280px;
     border-top: 8px solid #dc1e32;
     background: #000000;
-    overflow:hidden;
 }
 #footer .footer_inner{
     position: relative;
@@ -148,13 +147,8 @@
 #footer .goHeader{
     width: 48px;
     height: 48px;
-<<<<<<< HEAD
     background: url(../img/index_img/fanHui1.png);
-    z-index: 10;
-=======
-    background: url('../img/index_img/fanHui1.png');
-    z-index: 1000;
->>>>>>> 1b21b7bdf0a8701da55e1fc29973f890746d7b1e
+    z-index: 90;
     cursor: pointer;
 }
 #footer .goHeader:hover{

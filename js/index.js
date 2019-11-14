@@ -1,9 +1,21 @@
-import {header,onLogin} from './header.js';//引入头部js
+import { header, onLogin } from './header.js';//引入头部js
 import footer from './footer.js';//引入底部js
 
 header('./common/header.html');//执行底部脚本
 footer('./common/footer.html');//执行底部脚本
 
+
+// 在线客服
+(function () {
+    var html = document.documentElement;
+    var k_height = html.clientHeight;
+    $('.w-kefu').css('bottom', k_height / 7);
+    $(window).on('resize', e => {
+        var k_height = html.clientHeight;
+        console.log(666);
+        $('.w-kefu').css('bottom', k_height / 7);
+    });
+})();
 
 // banner图模块
 (function () {
@@ -23,9 +35,6 @@ footer('./common/footer.html');//执行底部脚本
     $(window).on('resize', e => {//窗口大小变动，重新初始化
         $('.w-banner>img').stop(true, true);
         b_width = $('.w-banner').width();
-        $('.w-banner>img').each(function (index, img) {
-            $(img).css('left', b_width * index);
-        });
         clearInterval(timer);
         timer = setInterval(lunBo, time);
     });
@@ -79,74 +88,51 @@ footer('./common/footer.html');//执行底部脚本
     );
 })();
 
+// 页面中间服务导航 
+(function () {
+    $('.w-nav .caDan .txt input').on({
+        'click': function (e) {
+            e.stopPropagation()
+            var height = $('.w-nav .caDan .txt').height();
+            if (height <= 40) {
+                $('.w-nav .caDan .click').fadeOut(50);
+                $('.w-nav .caDan span').fadeIn(50);
+                $('.w-nav .caDan .txt').animate({ height: 120, width: 306 }, 300)
+            };
+        },
+        'blur': function () {
+            // alert(666)
+        }
+    });
+    $(document).bind('click', function (e) {
+        $('.w-nav .caDan .click').fadeIn(50);
+        $('.w-nav .caDan span').fadeOut(50);
+        $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 300)
+    })
+})();
+
 // 顺丰全业务介绍 模块
 (function () {
-
     // 资源
-    var resource = {
-        wuliu: {
-            kuaidi: {
-                name: 'kuaidi',
-                h4: '快递服务',
-                p: '顺丰依托自有丰富运力资源，通过多项不同的快递产品和增值服务，来满足客多样化、个性化的寄件需求。',
-                img: 'img/index_img/kuaidi.jpg',
-                a: 'javascript:;'
-            },
-            lengyun: {
-                name: 'lengyun',
-                h4: '冷运服务',
-                p: '顺丰依托强大的冷链运输网和温控管理系统，为食品&医药冷链客户提供专业的冷运服务。',
-                img: 'img/index_img/lengyun.jpg',
-                a: 'javascript:;'
-            },
-            cangchu: {
-                name: 'lengyun',
-                h4: '仓储服务3',
-                p: '顺丰依托自身强大的仓储和运输网络资源，为电商客户打造的一站式物流服务。',
-                img: 'img/index_img/cangchu.jpg',
-                a: 'javascript:;'
-            }
+    var resource = null;
+    $.ajax({
+        type: 'get',
+        url: './data/index.json',
+        async: true,
+        data: '请求顺丰全业务介绍模块数据',
+        cache: true,
+        dataType: 'json',
+        success: function (json) {
+            resource = json['business'];
+            // 初始化加载内容
+            addWrap(Object.keys(resource)[0]);//加载默认资源模块
+            // 自动跳转功能
+            addtimer();
         },
-        jinrong: {
-            xindai: {
-                name: 'xindai',
-                h4: '信贷业务',
-                p: '基于顺丰的物流、仓储、速运、冷运、商业、支付结算等多元业务场景，促进物流、信息流、资金流"三流合一"，建立产业链金融服务体系，提供"物流+金融"综合解决方案。',
-                img: 'img/index_img/xindai.jpg',
-                a: 'javascript:;'
-            },
-            zhifu: {
-                name: 'zhifu',
-                h4: '综合支付',
-                p: '顺丰金融拥有第三方支付牌照，提供的资金流服务包括钱包支付、POS收单、聚合支付、代收付、认证支付、预付费卡（速运通卡）。',
-                img: 'img/index_img/zhifu.png',
-                a: 'javascript:;'
-            },
-            jinrong: {
-                name: 'jinrong',
-                h4: '金融科技',
-                p: '基于海量的数据积累，致力于通过信息技术、大数据分析平台，打造高效的分析应用、风险管理平台，让每一个小微个体享有快捷可靠的金融服务。',
-                img: 'img/index_img/jinrong.png',
-                a: 'javascript:;'
-            }
-        },
-        shangye: {
-            shangcheng: {
-                name: 'shangcheng',
-                h4: '顺丰优选网上商城',
-                p: '甄选全球优质美食，依托顺丰物流，成为生鲜食品配送范围最广的电商平台。 ',
-                img: 'img/index_img/shangcheng.jpg',
-                a: 'javascript:;'
-            },
-            mendian: {
-                name: 'mendian',
-                h4: '顺丰优选门店',
-                p: '立足社区，提供居民日常所需的优质美食及一小时送货上门、快递收发等服务。',
-                img: 'img/index_img/mendian.jpg',
-                a: 'javascript:;'
-            },
+        error: function (err) {
+            console.log(err, '请求失败');
         }
-    };
+    });
     //图片盒子模板
     function imgbox(obj) {
         return `
@@ -206,19 +192,13 @@ footer('./common/footer.html');//执行底部脚本
         });
     };
 
-    // 初始化加载内容
-    addWrap(Object.keys(resource)[0]);//加载默认资源模块
-
-    // 自动跳转功能
-    addtimer();
-
     //点击跳转功能
     $('.w-business .click').on('click', 'span', function () {
         var index = $(this).index();
         var gap = $('.w-business .wrap').eq(index).position().left;
 
         // 停止
-        $('.w-banner>img').stop();
+        $('.w-business .wrap').stop();
         clearInterval(timer);
         timer = setInterval(lunBo, 4000);//启动定时器
         if ($(this).hasClass('active')) {
@@ -238,7 +218,7 @@ footer('./common/footer.html');//执行底部脚本
         $('.w-business .click .active').prependTo($('.w-business .click'));
 
         // 清除动画和计时器
-        $('.w-banner>img').stop();
+        $('.w-business .wrap').stop();
         clearInterval(timer);
 
 

@@ -1,9 +1,39 @@
-import { header, onLogin } from './header.js';//引入头部js
+import { header, onLogin} from './header.js';//引入头部js
 import footer from './footer.js';//引入底部js
 
 
 header('../common/header.html');//执行底部脚本
+
 footer('../common/footer.html');//执行底部脚本
+
+var timer = setInterval(function(){
+    if($('.logo h1 a').length){
+        $('.logo h1 a').attr('href','../index.html');       
+    } 
+    if($('.nav li[class=shouye] a').length){
+        $('.nav li[class=shouye] a').attr('href','../index.html');
+    }
+    if($('.con4 ul li[class=wyjj] a').length){
+        $('.con4 ul li[class=wyjj] a').attr('href','wyjj.html');
+    }
+    if($('.right dl dt a[class=wyjj]').length){
+        $('.right dl dt a[class=wyjj]').attr('href','wyjj.html');
+    }
+    if($('.con4 ul li[class=ydzz] a').length){
+        $('.con4 ul li[class=ydzz] a').attr('href','ydzz.html');
+    }
+    if($('.list dl dd[class=wyjj] a').length){
+        $('.list dl dd[class=wyjj] a').attr('href','wyjj.html');
+    }
+    if($('.list dl dd[class=ydzz] a').length){
+        $('.list dl dd[class=ydzz] a').attr('href','ydzz.html');
+        clearInterval(timer);
+
+    }
+},0)
+
+
+
 
 var num1 = localStorage.getItem('num');
 window.onload = () => {
@@ -18,9 +48,10 @@ window.onload = () => {
             display: 'none'
         });
     }
+    
 }
 $(function () {
-
+     
     // 我的包裹span点击样式切换
     $('.l_mybox .l_my_span span').click(function () {
         $('.l_mybox .l_my_span span').each(function (index, item) {
@@ -61,11 +92,18 @@ $(function () {
             var i_width = $(this).width();
             $(this)[0].style.width = i_width - p_width - 27 + 'px';
             // console.log($(this).width());
+            // 当单号正确是隐藏错误提示
+            $('.l_inp_hint').css({
+                display: 'none'
+            });
             if (($(this).width()) < 90) {
                 $(this).width(548);
                 $(suc_p).css({
                     marginBottom: '10px'
                 });
+                $('.l_input').css({
+                    height: $('.l_input .l_inp_len').height()+15 + 'px',
+                })
                 $('.l_input .l_del').css({
                     height: $('.l_input').height() + 'px',
                     lineHeight: $('.l_input').height() + 'px'
@@ -97,12 +135,18 @@ $(function () {
             // console.log($(this).width());
             $('.l_inp_hint').css({
                 display: 'block'
-            })
+            });
+            $('.input_suc').css({
+                display: 'none'
+            });
             if (($(this).width()) < 90) {
                 $(this).width(548);
                 $(suc_p).css({
                     marginBottom: '10px'
                 });
+                $('.l_input').css({
+                    height: $('.l_input .l_inp_len').height()+15 + 'px',
+                })
                 $('.l_input .l_del').css({
                     height: $('.l_input').height() + 'px',
                     lineHeight: $('.l_input').height() + 'px'
@@ -120,7 +164,7 @@ $(function () {
     function onlod() {
         //请求数据
 
-        if (number == '199608292019' || num1== '199608292019') {
+        if (number == '199608292019') {
             $('.input_suc').css({
                 display: 'block'
             });
@@ -220,7 +264,70 @@ $(function () {
 
     //点击单号时直接查找
     $('.l_see').on('click', '.input_suc li a', function () {       
-        onlod();
+        if (num1== '199608292019') {
+            $('.input_suc').css({
+                display: 'block'
+            });
+
+            $('.input_suc li a').html('199608292019');
+            $('.remarks_con .inner ul').css({
+                display: 'block'
+            });
+            $.ajax({
+                url: '../data/carriage.json',
+                type: 'get',
+                dataType: 'json',
+                success: function (json) {
+                    $('.remarks_con .inner ul li').each(function (index, item) {
+                        $(item).remove();
+                    });
+                    var len = 0;
+                    for (var i in json) {
+                        // console.log(json[i])
+                        var list = document.createElement('li');
+                        $('.remarks_con .inner ul').append(list);
+                        $(list).addClass('clearfix');
+                        list.innerHTML = `<div class="con_left">
+                    <strong>${json[i][0]}</strong>
+                    <b><img src="../img/line_bg.png" alt=""></b>
+                    <i>${json[i][1]}</i>
+                </div>
+                <div class="con_right">
+                    <span>${json[i][2]}</span>
+                </div>`
+                        len += $(list).height();
+                    }
+                    $('.line').height(len - ($(list).height()) / 2);
+                },
+                error: function (err) {
+                    alert('请求失败');
+                    console.log(err.status);
+                }
+            })
+            $('.l_tolead').css({
+                display: 'block'
+            });
+            $('.remarks').css({
+                display: 'block'
+            });
+            $('.re_title').css({
+                display: 'none'
+            });
+
+        } else {           
+            $('.l_tolead').css({
+                display: 'block'
+            });
+            $('.remarks').css({
+                display: 'block'
+            });
+            $('.remarks_con .inner ul').css({
+                display: 'none'
+            });
+            $('.re_title').css({
+                display: 'block'
+            });
+        }
     })
 
     //点击X时删除

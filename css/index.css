@@ -1,3 +1,23 @@
+/* 在线客服 */
+.w-kefu{
+    position: fixed;
+    right: 15px;
+    bottom: 300px;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    background: #dc1e32 url(../img/index_img/icon1.png) no-repeat 18px -184px;
+    box-sizing: border-box;
+    padding-top: 42px;
+}
+.w-kefu span{
+    display: inline-block;
+    height: 28px;
+    line-height: 16px;
+    width: 100%;
+    color: #fff;
+    background:#dc1e32 ;
+}
 .w-banner{
     text-align: center;
     min-width: 1280px;
@@ -96,6 +116,83 @@
     height: 100%;
     flex-wrap: nowrap;
 }
+/* 运单查询 */
+.w-nav li.yundan{
+    position: relative;
+}
+.w-nav .caDan{
+    box-sizing: border-box;
+    position: absolute; ;
+    left: 0;
+    bottom: 98px;
+    width: 344px;
+    padding: 20px;
+    background: #fff;
+    z-index: 30;
+}
+.w-nav .caDan .txt{
+    float: left;
+    box-sizing: border-box; 
+    height: 42px;
+    width: 264px;
+    padding: 10px;
+    border: 1px solid #e1e1e0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+    border-radius: 5px;
+    z-index: 100;
+    cursor: text;
+}
+.w-nav .caDan input{
+    z-index: 100;
+    width: 100%;
+    height: 30px;
+    line-height: 24px;
+    font-size: 13px;
+}
+.w-nav .caDan span{
+    position: absolute;
+    display: none;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 30px;
+    left: 0;
+    bottom: 70px;
+    color: #999999;
+    z-index: 200;
+}
+.w-nav .caDan .click{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e1e1e0;
+    border-left: 0;
+    z-index: 0;
+    background: url(../img/index_img/icon7.png) no-repeat 4px -20px;
+    background-size: 30px 70px;
+    border-radius:5px;
+    cursor: pointer;
+}
+.w-nav .caDan .btn{
+    margin-top: 10px;
+    height: 33px;
+    line-height: 16px;
+    font-size: 16px;
+    width: 100%;
+    background: #dc1e32;
+    border: 1px solid #b51919;
+    color: #fff;
+    cursor: pointer;
+
+}
+.w-nav .caDan .btn:hover{
+    position: relative;
+    top: -1px;
+}
+/* 其它服务 */
 .w-nav li{
     box-sizing: border-box;
     width: 20%;
