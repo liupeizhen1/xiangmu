@@ -12,7 +12,6 @@ footer('./common/footer.html');//执行底部脚本
     $('.w-kefu').css('bottom', k_height / 7);
     $(window).on('resize', e => {
         var k_height = html.clientHeight;
-        console.log(666);
         $('.w-kefu').css('bottom', k_height / 7);
     });
 })();
@@ -20,6 +19,7 @@ footer('./common/footer.html');//执行底部脚本
 // banner图模块
 (function () {
     //初始化
+    $('.w-banner>img').attr('draggable', 'false');
     var b_width = $('.w-banner').width();
     $('.w-banner>img').each(function (index, img) {
         $(img).css('left', b_width * index);
@@ -77,6 +77,27 @@ footer('./common/footer.html');//执行底部脚本
         item++;
     };
 
+    // 拖拽未完成
+    // dragFn($('.w-banner'))
+    // // dragFn($('.w-banner img'))
+    // function dragFn(dom) {//函数拖拽功能
+    //     $(dom).off('mousedown');
+    //     $(dom).mousedown(function (e) {
+    //         $(dom).stop();
+    //         var toLeft = e.pageX - $('.w-banner img').position().left;
+    //         var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+    //         $(document).bind('mousemove', function (e) {
+    //             var x = e.clientX - toLeft;
+    //             $('.w-banner img').css({ 'left': x });
+    //         })
+    //         $(document).mouseup(function () {
+    //             $(dom).animate({ left: 0 }, 1500)
+    //             $(this).unbind('mousemove');
+    //             $(document).off('mouseup')
+    //         });
+    //     });
+    // };
+
     // 温馨提示
     $('.w-banner .right li').hover(
         function () {
@@ -87,28 +108,111 @@ footer('./common/footer.html');//执行底部脚本
         }
     );
 })();
-
 // 页面中间服务导航 
 (function () {
-    $('.w-nav .caDan .txt input').on({
-        'click': function (e) {
-            e.stopPropagation()
-            var height = $('.w-nav .caDan .txt').height();
-            if (height <= 40) {
-                $('.w-nav .caDan .click').fadeOut(50);
-                $('.w-nav .caDan span').fadeIn(50);
-                $('.w-nav .caDan .txt').animate({ height: 120, width: 306 }, 300)
-            };
-        },
-        'blur': function () {
-            // alert(666)
+    // 点击功能
+    function clickFn(e) {
+        e.stopPropagation()
+        $('.w-nav .caDan .click').fadeOut(50);
+        $('.w-nav .caDan span').fadeIn(50);
+        $('.w-nav .caDan .txt').animate({ height: 120, width: 306 }, 100);
+        $('.w-nav .caDan .txt input').focus();
+    }
+    $('.w-nav .caDan').on('click', '.txt', function (e) { clickFn(e) });
+    $('.w-nav .caDan').on('click', '.click', function (e) { clickFn(e) });
+
+    $(document).unbind('click');
+    addDocumentClick()
+    function addDocumentClick() {
+        $(document).bind('click', function (e) {
+            $('.w-nav .caDan .click').fadeIn(50);
+            $('.w-nav .caDan span').fadeOut(50);
+            $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
+        });
+    };
+
+    // 输入功能
+    $('.w-nav .caDan .txt input').on('change', function (e) {
+        var num = this.value.trim().replace(',', '');
+        this.value = '';
+        this.placeholder = '';
+        var reg = /^\d{12}$/;
+        var text = `<div class="number cuo"><b>${num}</b><a class="del">×</a></div>`;
+        this.focus();
+        $(document).unbind('click');
+        // 订单号验证
+        var arr = [];
+        $('.w-nav .caDan .dui>b').each(function (i, dom) {
+            arr.push(dom.innerText)
+        });
+        if (reg.test(num * 1) && !arr.includes(num) && !arr.includes(num * 1)) {
+            text = `<div class="number dui"><b>${num}</b><a class="del">×</a></div>`;
+        } else {
+            var hint = '<div class="hint">*运单号错误或重复。</div>'
+            $('.w-nav .caDan .top').after(hint);
+        }
+        if ($('.w-nav .caDan .cuo').length) {
+            $('.w-nav .caDan .btn').addClass('jin');
+            $('.w-nav .caDan .btn').removeClass('btn');
+        }
+        $('.w-nav .caDan .txt input').before(text);
+        // input宽度自适应
+        var width = this.offsetWidth - $('.w-nav .caDan .txt .number:last')[0].offsetWidth - 14;
+        if (width < 40) {
+            $(this).css('width', $(this).parent().width() + 'px');
+        } else {
+            $(this).css('width', width + 'px')
+        };
+
+        // .txt高度自适应
+        var height = $(this).parent().height();
+        if ($(this).position().top >= height - 16) {
+            $('.w-nav .caDan .txt').stop().animate({ height: height + 48 }, 100);
+            $('.w-nav .caDan .top').animate({ height: height + 48 }, 100);
+        };
+    });
+    // 完成输入
+    $('.w-nav .caDan .txt input').on('keyup', function (e) {
+        var key = e.keyCode;
+        if (key == 188 || key == 32) {
+            $(this)[0].blur();
+            $(this)[0].focus();
+        };
+    });
+    // 删除功能
+    $('.w-nav .caDan .txt').on('click', '.del', function (e) {
+        e.stopPropagation();
+        $('.w-nav .caDan .txt input').focus();
+        this.parentNode.remove();
+        if (!$('.w-nav .caDan .cuo').length) {
+            $('.w-nav .caDan .jin').addClass('btn');
+            $('.w-nav .caDan .jin').removeClass('jin');
+            $('.w-nav .caDan .hint').remove();
+        }
+        if (!$('.w-nav .caDan .txt .num').length) {
+            $('.w-nav .caDan .txt input')[0].placeholder = '您可以输运单号查询';
+            addDocumentClick();
         }
     });
-    $(document).bind('click', function (e) {
-        $('.w-nav .caDan .click').fadeIn(50);
-        $('.w-nav .caDan span').fadeOut(50);
-        $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 300)
-    })
+    // 激活状态
+    $('.w-nav .caDan .txt').on('click', '.number', function (e) {
+        $('.w-nav .caDan .txt .number').removeClass('active');
+        $(this).addClass('active');
+        $('.w-nav .caDan .txt input').focus();
+    });
+
+    // 提交运单号
+    $('.w-nav .caDan').on('click', '.btn', function () {
+        if ($('.w-nav .caDan .number').length) {
+            var arr = [];
+            $('.w-nav .caDan .dui>b').each(function (i, dom) {
+                arr.push(dom.innerText * 1)
+            });
+            var json = JSON.stringify(arr);
+            localStorage.setItem('num', json);
+            window.open('./subpage/ydzz.html')
+        };
+    });
 })();
 
 // 顺丰全业务介绍 模块
@@ -263,24 +367,30 @@ footer('./common/footer.html');//执行底部脚本
     );
     // 拖拽功能
 
-
+    var bln = false;
     dragFn($('.w-anli .list'));
     function dragFn(dom) {//函数拖拽功能
-        $(dom).off('mousedown');
-        $(dom).mousedown(function (e) {
-            e.stopPropagation();
+        $(dom).unbind('mousedown');
+        $(dom).bind('mousedown', function (e) {
+            bln = true;
             $(dom).stop();
-            var toLeft = e.pageX - $(dom).position().left;
+            $('.w-anli .list a').attr('onclick', 'return' + bln)
+            $('.w-anli .list a').attr('draggable', 'false');
+            $('.w-anli .list img').attr('draggable', 'false');
+            var toLeft = e.pageX - $('.w-anli .list').position().left;
             var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+
+            $(document).unbind('mousemove');
             $(document).bind('mousemove', function (e) {
                 var x = e.clientX - toLeft;
-                dom.css({ 'left': x });
+                $(dom).css({ 'left': x });
+                $('.w-anli .list a').attr('onclick', 'return false')
             })
-            $(document).mouseup(function () {
-                $(dom).animate({ left: 0 }, 1500)
-                $(this).unbind('mousemove');
-                $(document).off('mouseup')
-            });
+        });
+        $(document).unbind('mouseup');
+        $(document).mouseup(function (e) {
+            $(document).unbind('mousemove');
+            $('.w-anli .list').animate({ left: 0 }, 1500)
         });
     };
 })();

@@ -43,7 +43,7 @@ img{
 	vertical-align:top;
 	border:0;	
 }
-input{
+input,textarea{
 	border: 0;
 	outline:none;
 	color: #333333;	
