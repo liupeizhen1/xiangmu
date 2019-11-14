@@ -3,7 +3,6 @@
     width: 1280px;
     margin: 0 auto;
     cursor: pointer;
-    overflow: hidden;
 }
 .w-cursor1{
     cursor: default;
@@ -84,9 +83,9 @@
 }
 /* 隐藏的二级导航栏 */
 #header .hide{
+    position: absolute;
     display: none;
     padding-top: 2px;
-    position: absolute;
     background: #f1f1f1;
     top: 70px;
     left: 0;
@@ -329,7 +328,6 @@
 #login .con>p{
     text-align: right;
     padding-right: 5px;
-    /* margin-top: -10px; */
 }
 #login p a{
     color: #dc1e32;
