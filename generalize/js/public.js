@@ -7,7 +7,7 @@
 // })
 $('#header').load('../common/header.html');
 
-import header from '../../js/header.js';
+import { header, onLogin } from '../../js/header.js';
 header('../common/header.html');
 $('#footer').load('../common/footer.html');
 import footer from '../../js/footer.js'
