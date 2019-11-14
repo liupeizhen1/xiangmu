@@ -15,7 +15,13 @@ import footer from '../../js/footer.js'
 footer('../common/footer.html')
 // $('#login').click(function(){
 //     console.log(6);
-    
+var timer = setTimeout(function(){
+    if($('.shouye').attr('href').indexOf('./') >= 0){
+        $('.shouye').attr('href','../index.html')
+        $('.nav .guanyu').attr('href','../about_us/index.html')
+        $('.chenggong').attr('href','../successfulCase/index.html')
+    }
+},1000)  
 // })
 // $('#login .con img').attr('src','../../img/index_img/img3.png');
 

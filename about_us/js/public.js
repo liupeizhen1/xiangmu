@@ -15,7 +15,15 @@ import footer from '../../js/footer.js';
 footer('../common/footer.html')
 // $('#login').click(function(){
 //     console.log(6);
-    
+var timer = setTimeout(function(){
+    if($('.shouye').attr('href').indexOf('./') >= 0){
+        $('.shouye').attr('href','../index.html')
+        $('.nav .guanyu').attr('href','./index.html')
+        $('.guanyu1').attr('href','./index.html')
+        $('.chenggong').attr('href','../successfulCase/index.html')
+    }
+    //  $('.nav>ul>li>a').attr('href','./index.html')
+},1000)
 // })
 // $('#login .con img').attr('src','../../img/index_img/img3.png');
 
