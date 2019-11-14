@@ -1,10 +1,4 @@
-// $('.select').mouseenter(function(){
-//     $('.select p').css({
-//         // 'color':'#dc1e32',
-//         'border-bottom':'1px solid #dc1e32'
-//     })
-    
-// })
+
 $('#header').load('../common/header.html');
 
 import { header, onLogin } from '../../js/header.js';
@@ -22,8 +16,6 @@ var timer = setTimeout(function(){
         $('.guanyu1').attr('href','./index.html')
         $('.chenggong').attr('href','../successfulCase/index.html')
     }
-    //  $('.nav>ul>li>a').attr('href','./index.html')
 },1000)
-// })
-// $('#login .con img').attr('src','../../img/index_img/img3.png');
+
 
