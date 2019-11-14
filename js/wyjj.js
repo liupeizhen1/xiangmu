@@ -1,38 +1,24 @@
-import {header,onLogin} from './header.js';//引入头部js
+import { header, onLogin } from './header.js';//引入头部js
 import footer from './footer.js';//引入底部js
 
 
 header('../common/header.html');//执行底部脚本
 footer('../common/footer.html');//执行底部脚本
-var timer = setInterval(function(){
-    if($('.logo h1 a').length){
-        $('.logo h1 a').attr('href','../index.html');       
-    } 
-    if($('.nav li[class=shouye] a').length){
-        $('.nav li[class=shouye] a').attr('href','../index.html');
-    }
-    if($('.con4 ul li[class=wyjj] a').length){
-        $('.con4 ul li[class=wyjj] a').attr('href','wyjj.html');
-    }
-    if($('.right dl dt a[class=wyjj]').length){
-        $('.right dl dt a[class=wyjj]').attr('href','wyjj.html');
-    }
-    if($('.con4 ul li[class=ydzz] a').length){
-        $('.con4 ul li[class=ydzz] a').attr('href','ydzz.html');
-    }
-    if($('.list dl dd[class=wyjj] a').length){
-        $('.list dl dd[class=wyjj] a').attr('href','wyjj.html');
-    }
-    if($('.list dl dd[class=ydzz] a').length){
-        $('.list dl dd[class=ydzz] a').attr('href','ydzz.html');
-        clearInterval(timer);
+var timer = setInterval(function () {
 
+    if ($('#header .nav>ul>li>a,.logo h1 a').length >= 9) {
+        $('.logo h1 a').attr('href', '../index.html');
+        $('.nav ul li[class=shouye] a').attr('href', '../index.html');
+        $('.con4 ul li[class=wyjj] a').attr('href', 'wyjj.html');
+        $('.right dl dt a[class=wyjj]').attr('href', 'wyjj.html');
+        $('.con4 ul li[class=ydzz] a').attr('href', 'ydzz.html');
+        $('.list dl dd[class=wyjj] a').attr('href', 'wyjj.html');
+        $('.list dl dd[class=ydzz] a').attr('href', 'ydzz.html');
+        clearInterval(timer);
     }
-},0)
+}, 10)
 
 $(function () {
-    
-
     // 切换nav
     $('.l_wyjj_nav a').click(function () {
         $('.l_wyjj_nav a').each(function (index, item) {
@@ -235,6 +221,7 @@ $(function () {
             </div>
         </div>
     </div>`;
+
     }
 
     //从Excel添加
@@ -673,11 +660,11 @@ $(function () {
     })
 
     // 预约信息中的点击下一步
-    $('body').on('click','.l_reserve .l_next_btn span',onLogin);
-    
+    $('body').on('click', '.l_reserve .l_next_btn span', onLogin);
+
     //点击添加至地址簿时显示登录
-    $('body').on('click','.l_save_adress span',onLogin);
-    $('body').on('click','.l_mesg .l_m_right span',onLogin);
+    $('body').on('click', '.l_save_adress span', onLogin);
+    $('body').on('click', '.l_mesg .l_m_right span', onLogin);
 
     // 模块3
     $('.l_ewmjj .l_odd_btn').click(function () {
