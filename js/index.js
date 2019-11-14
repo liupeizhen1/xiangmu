@@ -4,14 +4,6 @@ import footer from './footer.js';//引入底部js
 header('./common/header.html');//执行底部脚本
 footer('./common/footer.html');//执行底部脚本
 
-var timer33 = setTimeout(function () {
-    if ($('#login').length) {
-        console.log($('#login')[0]);
-        clearInterval(timer33);
-    } else {
-        console.log(555)
-    }
-}, 100);
 
 // 在线客服
 (function () {
@@ -130,11 +122,15 @@ var timer33 = setTimeout(function () {
     $('.w-nav .caDan').on('click', '.click', function (e) { clickFn(e) });
 
     $(document).unbind('click');
-    $(document).bind('click', function (e) {
-        $('.w-nav .caDan .click').fadeIn(50);
-        $('.w-nav .caDan span').fadeOut(50);
-        $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
-    });
+    addDocumentClick()
+    function addDocumentClick() {
+        $(document).bind('click', function (e) {
+            $('.w-nav .caDan .click').fadeIn(50);
+            $('.w-nav .caDan span').fadeOut(50);
+            $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
+        });
+    };
+
     // 输入功能
     $('.w-nav .caDan .txt input').on('change', function (e) {
         var num = this.value.trim().replace(',', '');
@@ -185,6 +181,7 @@ var timer33 = setTimeout(function () {
     });
     // 删除功能
     $('.w-nav .caDan .txt').on('click', '.del', function (e) {
+        e.stopPropagation();
         $('.w-nav .caDan .txt input').focus();
         this.parentNode.remove();
         if (!$('.w-nav .caDan .cuo').length) {
@@ -192,8 +189,10 @@ var timer33 = setTimeout(function () {
             $('.w-nav .caDan .jin').removeClass('jin');
             $('.w-nav .caDan .hint').remove();
         }
-        if (!$('.w-nav .caDan .txt .num'))
+        if (!$('.w-nav .caDan .txt .num').length) {
             $('.w-nav .caDan .txt input')[0].placeholder = '您可以输运单号查询';
+            addDocumentClick();
+        }
     });
     // 激活状态
     $('.w-nav .caDan .txt').on('click', '.number', function (e) {
@@ -369,29 +368,29 @@ var timer33 = setTimeout(function () {
     // 拖拽功能
 
     var bln = false;
-    dragFn($('.w-anli .list a'));
+    dragFn($('.w-anli .list'));
     function dragFn(dom) {//函数拖拽功能
-        $(dom).off('mousedown');
-        $(dom).mousedown(function (e) {
+        $(dom).unbind('mousedown');
+        $(dom).bind('mousedown', function (e) {
             bln = true;
-            e.preventDefault();
-            $(dom).attr('onclick', 'return' + bln)
             $(dom).stop();
+            $('.w-anli .list a').attr('onclick', 'return' + bln)
             $('.w-anli .list a').attr('draggable', 'false');
             $('.w-anli .list img').attr('draggable', 'false');
             var toLeft = e.pageX - $('.w-anli .list').position().left;
             var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+
+            $(document).unbind('mousemove');
             $(document).bind('mousemove', function (e) {
                 var x = e.clientX - toLeft;
-                $('.w-anli .list').css({ 'left': x });
-                $(dom).attr('onclick', 'return false')
+                $(dom).css({ 'left': x });
+                $('.w-anli .list a').attr('onclick', 'return false')
             })
         });
+        $(document).unbind('mouseup');
         $(document).mouseup(function (e) {
+            $(document).unbind('mousemove');
             $('.w-anli .list').animate({ left: 0 }, 1500)
-            $(this).unbind('mousemove');
-            $('.w-anli .list a').attr('draggable', 'true');
-            $('.w-anli .list img').attr('draggable', 'true');
         });
     };
 })();
