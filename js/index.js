@@ -4,6 +4,14 @@ import footer from './footer.js';//引入底部js
 header('./common/header.html');//执行底部脚本
 footer('./common/footer.html');//执行底部脚本
 
+var timer33 = setTimeout(function () {
+    if ($('#login').length) {
+        console.log($('#login')[0]);
+        clearInterval(timer33);
+    } else {
+        console.log(555)
+    }
+}, 100);
 
 // 在线客服
 (function () {
@@ -19,6 +27,7 @@ footer('./common/footer.html');//执行底部脚本
 // banner图模块
 (function () {
     //初始化
+    $('.w-banner>img').attr('draggable', 'false');
     var b_width = $('.w-banner').width();
     $('.w-banner>img').each(function (index, img) {
         $(img).css('left', b_width * index);
@@ -75,25 +84,27 @@ footer('./common/footer.html');//执行底部脚本
         });
         item++;
     };
-    // dragFn($('.w-banner>img'))
-    function dragFn(dom) {//函数拖拽功能
-        $(dom).off('mousedown');
-        $(dom).mousedown(function (e) {
-            e.stopPropagation();
-            $(dom).stop();
-            var toLeft = e.pageX - $(dom).position().left;
-            var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
-            $(document).bind('mousemove', function (e) {
-                var x = e.clientX - toLeft;
-                dom.css({ 'left': x });
-            })
-            $(document).mouseup(function () {
-                $(dom).animate({ left: 0 }, 1500)
-                $(this).unbind('mousemove');
-                $(document).off('mouseup')
-            });
-        });
-    };
+
+    // 拖拽未完成
+    // dragFn($('.w-banner'))
+    // // dragFn($('.w-banner img'))
+    // function dragFn(dom) {//函数拖拽功能
+    //     $(dom).off('mousedown');
+    //     $(dom).mousedown(function (e) {
+    //         $(dom).stop();
+    //         var toLeft = e.pageX - $('.w-banner img').position().left;
+    //         var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
+    //         $(document).bind('mousemove', function (e) {
+    //             var x = e.clientX - toLeft;
+    //             $('.w-banner img').css({ 'left': x });
+    //         })
+    //         $(document).mouseup(function () {
+    //             $(dom).animate({ left: 0 }, 1500)
+    //             $(this).unbind('mousemove');
+    //             $(document).off('mouseup')
+    //         });
+    //     });
+    // };
 
     // 温馨提示
     $('.w-banner .right li').hover(
@@ -357,24 +368,30 @@ footer('./common/footer.html');//执行底部脚本
     );
     // 拖拽功能
 
-
-    dragFn($('.w-anli .list'));
+    var bln = false;
+    dragFn($('.w-anli .list a'));
     function dragFn(dom) {//函数拖拽功能
         $(dom).off('mousedown');
         $(dom).mousedown(function (e) {
-            e.stopPropagation();
+            bln = true;
+            e.preventDefault();
+            $(dom).attr('onclick', 'return' + bln)
             $(dom).stop();
-            var toLeft = e.pageX - $(dom).position().left;
+            $('.w-anli .list a').attr('draggable', 'false');
+            $('.w-anli .list img').attr('draggable', 'false');
+            var toLeft = e.pageX - $('.w-anli .list').position().left;
             var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
             $(document).bind('mousemove', function (e) {
                 var x = e.clientX - toLeft;
-                dom.css({ 'left': x });
+                $('.w-anli .list').css({ 'left': x });
+                $(dom).attr('onclick', 'return false')
             })
-            $(document).mouseup(function () {
-                $(dom).animate({ left: 0 }, 1500)
-                $(this).unbind('mousemove');
-                $(document).off('mouseup')
-            });
+        });
+        $(document).mouseup(function (e) {
+            $('.w-anli .list').animate({ left: 0 }, 1500)
+            $(this).unbind('mousemove');
+            $('.w-anli .list a').attr('draggable', 'true');
+            $('.w-anli .list img').attr('draggable', 'true');
         });
     };
 })();
