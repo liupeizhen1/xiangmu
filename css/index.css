@@ -9,6 +9,7 @@
     background: #dc1e32 url(../img/index_img/icon1.png) no-repeat 18px -184px;
     box-sizing: border-box;
     padding-top: 42px;
+    z-index: 1100;
 }
 .w-kefu span{
     display: inline-block;
@@ -130,8 +131,12 @@
     background: #fff;
     z-index: 30;
 }
+.w-nav .caDan .top{
+    position: relative;
+}
 .w-nav .caDan .txt{
     float: left;
+    position: relative;
     box-sizing: border-box; 
     height: 42px;
     width: 264px;
@@ -139,33 +144,79 @@
     border: 1px solid #e1e1e0;
     box-shadow: inset 0 0 5px rgba(0,0,0,.2);
     border-radius: 5px;
-    border-radius: 5px;
-    z-index: 100;
+    overflow: hidden;
     cursor: text;
+}
+.w-nav .caDan .txt .number{
+    float: left;
+    text-indent: 4px;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: #999999;
+    border: 1px solid transparent;
+    border-bottom: 1px dotted #b94a48;
+}
+.w-nav .caDan .txt .active{
+    background: #eeeeee;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+}
+.w-nav .caDan .txt .dui{
+    background: #eeeeee;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+    border-bottom: 0;
+}
+.w-nav .caDan .txt .dui:hover{
+    box-sizing: border-box;
+    border: 1px solid #b94a48;
+}
+.w-nav .caDan .txt .number .del{
+    padding: 0 4px;
+    height: 24px;
+    color: #444444;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 4px;
+    z-index: 300;
+}
+.w-nav .caDan .txt .number .del:hover{
+    color: #dd1e32;
 }
 .w-nav .caDan input{
     z-index: 100;
-    width: 100%;
-    height: 30px;
+    float: left;
+    width: 290px;
+    height: 24px;
     line-height: 24px;
     font-size: 13px;
 }
 .w-nav .caDan span{
     position: absolute;
+    bottom: 8px;
     display: none;
     font-size: 13px;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 30px;
-    left: 0;
-    bottom: 70px;
+    padding: 0 10px;
     color: #999999;
     z-index: 200;
+    display: none;
+}
+.w-nav .caDan .hint{
+    padding-left: 10px;
+    height: 16px;
+    line-height: 24px;
+    letter-spacing: 2px;
+    color: #dc1e32;
 }
 .w-nav .caDan .click{
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 0;
+    top: 0;
     width: 40px;
     height: 40px;
     border: 1px solid #e1e1e0;
@@ -176,7 +227,7 @@
     border-radius:5px;
     cursor: pointer;
 }
-.w-nav .caDan .btn{
+.w-nav .caDan .btn,.w-nav .caDan .jin{
     margin-top: 10px;
     height: 33px;
     line-height: 16px;
@@ -186,7 +237,11 @@
     border: 1px solid #b51919;
     color: #fff;
     cursor: pointer;
-
+}
+.w-nav .caDan .jin{
+    background: #999999;
+    cursor: no-drop;
+    border: 0;
 }
 .w-nav .caDan .btn:hover{
     position: relative;
@@ -203,7 +258,7 @@
 .w-nav li:hover{
     background: #fff;
 }
-.w-nav li a{
+.w-nav li>a{
     width: 100%;
     height: 38px;
     line-height: 31px;
@@ -213,24 +268,24 @@
     background: url(../img/index_img/icon19.png) no-repeat;
     text-align: center;
 }
-.w-nav li:hover a{
+.w-nav li:hover>a{
     color: #dc1e32;
     background:#fff url(../img/index_img/icon18.png) no-repeat;
 
 }
-.w-nav li:nth-of-type(1) a{
+.w-nav li:nth-of-type(1)>a{
     background-position: 0 0;
 }
-.w-nav li:nth-of-type(2) a{
+.w-nav li:nth-of-type(2)>a{
     background-position: 0 -38px;
 }
-.w-nav li:nth-of-type(3) a{
+.w-nav li:nth-of-type(3)>a{
     background-position: 0 -76px;
 }
-.w-nav li:nth-of-type(4) a{
+.w-nav li:nth-of-type(4)>a{
     background-position: 0 -114px;
 }
-.w-nav li:nth-of-type(5) a{
+.w-nav li:nth-of-type(5)>a{
     background-position: 0 -152px;
 }
 .w-business{
