@@ -256,14 +256,19 @@ footer('./common/footer.html');//执行底部脚本
             }
             $('.w-business  .c-bottom').append(wrap);
         }
-        sort($('.w-business .wrap'));
+        var dom = $('.w-business .wrap:first').clone();//为实现循环播放，再次添加首图放在末尾
+        $(dom).css('left', ($('.w-business .wrap:last').position().left + width));
+        $(dom).appendTo($('.w-business .c-bottom'));
+        sort($('.w-business .wrap'));// 子节点自动排序
 
         // 根据需求重新生成点击切换图片的节点
         $('.w-business .c-bottom .click').empty();
-        for (let num = 0; num < $('.w-business .wrap').length; num++) {
+        for (let num = 0; num < $('.w-business .wrap').length - 1; num++) {
             $('.w-business .c-bottom .click').append('<span></span>');
         };
         $('.w-business .c-bottom .click span').eq(0).addClass('active');
+
+
     };
     function sort(dom) {// 定位子节点排序
         $(dom).each(function (index, wrap) {
@@ -282,12 +287,6 @@ footer('./common/footer.html');//执行底部脚本
     var width = $('.w-business').width();
     //轮播图效果
     function lunBo(gap, bln, clickIndex) {
-        if ($('.w-business .wrap').length == $('.w-business .click span').length) {//为实现循环播放，再次添加首图放在末尾
-            let dom = $('.w-business .wrap:first').clone();
-            $(dom).css('left', ($('.w-business .wrap:last').position().left + width));
-            $(dom).appendTo($('.w-business .c-bottom'));
-        };
-
         time = 8500;//循环间隔
         // 初始值
         gap = gap || width;
@@ -344,7 +343,7 @@ footer('./common/footer.html');//执行底部脚本
         };
         // 根据需求重新生成点击切换图片的节点
         $('.w-business .c-bottom .click').empty();
-        for (let num = 0; num < $('.w-business .wrap').length; num++) {
+        for (let num = 0; num < $('.w-business .wrap').length - 1; num++) {
             $('.w-business .c-bottom .click').append('<span></span>');
         };
         $('.w-business .c-bottom .click span').eq(0).addClass('active');
