@@ -16,8 +16,8 @@ footer('../common/footer.html')
 // $('#login').click(function(){
 //     console.log(6);
 var timer = setTimeout(function(){
-    if($('.shouye').attr('href').indexOf('./') >= 0){
-        $('.shouye').attr('href','../index.html')
+    if($('.shouye a').attr('href').indexOf('./') >= 0){
+        $('.shouye a').attr('href','../index.html')
         $('.nav .guanyu').attr('href','../about_us/index.html')
         $('.chenggong').attr('href','../successfulCase/index.html')
     }
