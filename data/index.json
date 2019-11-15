@@ -60,7 +60,29 @@
                 "p": "立足社区，提供居民日常所需的优质美食及一小时送货上门、快递收发等服务。",
                 "img": "./img/index_img/mendian.jpg",
                 "a": "javascript:;"
+            },
+            "xindai": {
+                "name": "xindai",
+                "h4": "信贷业务",
+                "p": "基于顺丰的物流、仓储、速运、冷运、商业、支付结算等多元业务场景，促进物流、信息流、资金流'三流合一'，建立产业链金融服务体系，提供'物流+金融'综合解决方案。",
+                "img": "./img/index_img/xindai.jpg",
+                "a": "javascript:;"
+            },
+            "zhifu": {
+                "name": "zhifu",
+                "h4": "综合支付",
+                "p": "顺丰金融拥有第三方支付牌照，提供的资金流服务包括钱包支付、POS收单、聚合支付、代收付、认证支付、预付费卡（速运通卡）。",
+                "img": "./img/index_img/zhifu.png",
+                "a": "javascript:;"
+            },
+            "jinrong": {
+                "name": "jinrong",
+                "h4": "金融科技",
+                "p": "基于海量的数据积累，致力于通过信息技术、大数据分析平台，打造高效的分析应用、风险管理平台，让每一个小微个体享有快捷可靠的金融服务。",
+                "img": "./img/index_img/jinrong.png",
+                "a": "javascript:;"
             }
+            
         }
     }
 }

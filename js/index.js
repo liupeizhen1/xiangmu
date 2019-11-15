@@ -77,27 +77,6 @@ footer('./common/footer.html');//执行底部脚本
         item++;
     };
 
-    // 拖拽未完成
-    // dragFn($('.w-banner'))
-    // // dragFn($('.w-banner img'))
-    // function dragFn(dom) {//函数拖拽功能
-    //     $(dom).off('mousedown');
-    //     $(dom).mousedown(function (e) {
-    //         $(dom).stop();
-    //         var toLeft = e.pageX - $('.w-banner img').position().left;
-    //         var maxX = document.documentElement.clientWidth - dom[0].offsetWidth;
-    //         $(document).bind('mousemove', function (e) {
-    //             var x = e.clientX - toLeft;
-    //             $('.w-banner img').css({ 'left': x });
-    //         })
-    //         $(document).mouseup(function () {
-    //             $(dom).animate({ left: 0 }, 1500)
-    //             $(this).unbind('mousemove');
-    //             $(document).off('mouseup')
-    //         });
-    //     });
-    // };
-
     // 温馨提示
     $('.w-banner .right li').hover(
         function () {
@@ -131,7 +110,6 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-nav .caDan .txt').animate({ height: 40, width: 264 }, 100);
             $('.w-nav .caDan').removeAttr('style');
             $('.w-nav .caDan').find('*').removeAttr('style');
-            console.log($('.w-nav .caDan .top'));
         });
     };
 
@@ -157,16 +135,15 @@ footer('./common/footer.html');//执行底部脚本
             var hint = '<div class="hint">*运单号错误或重复。</div>'
             $('.w-nav .caDan .top').after(hint);
         };
-        if($('.w-nav .caDan .txt .number').length >=21){
+        if ($('.w-nav .caDan .txt .number').length >= 21) {
             alert('最多可查询20条');
             return false
         };
-        console.log($('.w-nav .caDan .txt .number').length);
-        
+
         // 插入节点
         $('.w-nav .caDan .txt input').before(text);
         // 判断是否符合条件可以提交
-        if (!$('.w-nav .caDan .cuo').length) {
+        if ($('.w-nav .caDan .cuo').length) {
             $('.w-nav .caDan .btn').addClass('jin');
             $('.w-nav .caDan .btn').removeClass('btn');
         }
@@ -280,53 +257,71 @@ footer('./common/footer.html');//执行底部脚本
             $('.w-business  .c-bottom').append(wrap);
         }
         sort($('.w-business .wrap'));
+
+        // 根据需求重新生成点击切换图片的节点
+        $('.w-business .c-bottom .click').empty();
+        for (let num = 0; num < $('.w-business .wrap').length; num++) {
+            $('.w-business .c-bottom .click').append('<span></span>');
+        };
+        $('.w-business .c-bottom .click span').eq(0).addClass('active');
     };
     function sort(dom) {// 定位子节点排序
         $(dom).each(function (index, wrap) {
             $(wrap).css('left', $(wrap.offsetParent).width() * index);
         });
-    }
+    };
     function addtimer() {//判定是否需要计时器
         if ($('.w-business .wrap').length > 1) {
             $('.w-business .c-bottom .click').fadeIn(500);
             timer = setInterval(lunBo, 4000);//启动定时器
         } else {
             $('.w-business .c-bottom .click').fadeOut(500);
-
         };
-    }
+    };
     var timer = null, time = 7000;
     var width = $('.w-business').width();
     //轮播图效果
-    function lunBo(gap, bln) {
+    function lunBo(gap, bln, clickIndex) {
+        if ($('.w-business .wrap').length == $('.w-business .click span').length) {//为实现循环播放，再次添加首图放在末尾
+            let dom = $('.w-business .wrap:first').clone();
+            $(dom).css('left', ($('.w-business .wrap:last').position().left + width));
+            $(dom).appendTo($('.w-business .c-bottom'));
+        };
+
         time = 8500;//循环间隔
         // 初始值
         gap = gap || width;
-        // 替换位置
-        $('.w-business .click span').eq(0).appendTo($('.w-business .click'));
-        // 动画
-        $('.w-business .wrap').each(function (i, wrap) {
-            if ($(wrap).position().left <= -width && !bln) {//重新排列
-                $(wrap).appendTo($('.w-business .c-bottom'));
-                $(wrap).css('left', width * ($(wrap).index() - 1));
-            }
+
+        // 切换点击节点激活状态
+        var index = $('.w-business .click span.active').index() + 1;
+        clickIndex = (clickIndex == 0) ? (clickIndex + '') : clickIndex;
+        index = (clickIndex) || (index < $('.w-business .click span').length ? index : 0);
+        $('.w-business .click span.active').removeClass('active');
+        $('.w-business .click span').eq(index * 1).addClass('active');
+
+        if (index == 1 && !bln) {//重新排列
+            index = 100;
+            $('.w-business .wrap').each(function (index, wrap) {
+                $(wrap).css('left', width * index);
+            });
+        };
+        $('.w-business .wrap').each(function (i, wrap) {// 添加动画效果
             $(wrap).animate({ left: $(wrap).position().left - gap }, 1500, 'easeOutQuad');
         });
     };
-
     //点击跳转功能
     $('.w-business .click').on('click', 'span', function () {
         var index = $(this).index();
         var gap = $('.w-business .wrap').eq(index).position().left;
-
+        var bln = (gap < 0);
         // 停止
-        $('.w-business .wrap').stop();
         clearInterval(timer);
         timer = setInterval(lunBo, 4000);//启动定时器
         if ($(this).hasClass('active')) {
             return
         };
-        lunBo(gap, true);//跳转
+        $('.w-business .wrap').stop();
+        lunBo(gap, bln, index);//跳转
     });
     var wrapList = {}
     //点击切换wrap模块
@@ -337,20 +332,23 @@ footer('./common/footer.html');//执行底部脚本
         //更换激活节点 
         $('.w-business .c-top .active').removeClass('active');
         $(this).children().addClass('active');
-        $('.w-business .click .active').prependTo($('.w-business .click'));
 
         // 清除动画和计时器
         $('.w-business .wrap').stop();
         clearInterval(timer);
 
-
-        if (wrapList[name]) {//已存在的模块直接插入，不重新生成
+        if (wrapList[name]) {//已存在的模块直接插入，不重新生成(单例)
             wrapList[name].appendTo($('.w-business .c-bottom'));
         } else {
             addWrap(name)//重新生成内容
         };
-
-        // 自动跳转功能
+        // 根据需求重新生成点击切换图片的节点
+        $('.w-business .c-bottom .click').empty();
+        for (let num = 0; num < $('.w-business .wrap').length; num++) {
+            $('.w-business .c-bottom .click').append('<span></span>');
+        };
+        $('.w-business .c-bottom .click span').eq(0).addClass('active');
+        // 启动轮播图
         addtimer();
     });
 })();
