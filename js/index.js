@@ -256,9 +256,9 @@ footer('./common/footer.html');//执行底部脚本
             }
             $('.w-business  .c-bottom').append(wrap);
         }
-        var dom = $('.w-business .wrap:first').clone();//为实现循环播放，再次添加首图放在末尾
-        $(dom).css('left', ($('.w-business .wrap:last').position().left + width));
-        $(dom).appendTo($('.w-business .c-bottom'));
+        $('.w-business .wrap:last').addClass('last');
+        var dom = $('.w-business .wrap:last').clone();//为实现循环播放，复制尾图放在头部
+        $(dom).prependTo($('.w-business .c-bottom'));
         sort($('.w-business .wrap'));// 子节点自动排序
 
         // 根据需求重新生成点击切换图片的节点
@@ -270,27 +270,26 @@ footer('./common/footer.html');//执行底部脚本
 
 
     };
-    function sort(dom) {// 定位子节点排序
+    function sort(dom) {// 轮播图排序
         $(dom).each(function (index, wrap) {
-            $(wrap).css('left', $(wrap.offsetParent).width() * index);
+            $(wrap).css('left', $(wrap.offsetParent).width() * (index - 1));
         });
     };
     function addtimer() {//判定是否需要计时器
         if ($('.w-business .wrap').length > 1) {
             $('.w-business .c-bottom .click').fadeIn(500);
-            timer = setInterval(lunBo, 4000);//启动定时器
+            timer = setInterval(lunBo, time);//启动定时器
         } else {
             $('.w-business .c-bottom .click').fadeOut(500);
         };
     };
-    var timer = null, time = 7000;
+    var timer = null, time = 5500;
     var width = $('.w-business').width();
     //轮播图效果
     function lunBo(gap, bln, clickIndex) {
-        time = 8500;//循环间隔
+        time = 7000;//循环间隔
         // 初始值
         gap = gap || width;
-
         // 切换点击节点激活状态
         var index = $('.w-business .click span.active').index() + 1;
         clickIndex = (clickIndex == 0) ? (clickIndex + '') : clickIndex;
@@ -298,10 +297,20 @@ footer('./common/footer.html');//执行底部脚本
         $('.w-business .click span.active').removeClass('active');
         $('.w-business .click span').eq(index * 1).addClass('active');
 
-        if (index == 1 && !bln) {//重新排列
-            index = 100;
-            $('.w-business .wrap').each(function (index, wrap) {
-                $(wrap).css('left', width * index);
+        if ((index == 0 && !bln)) {//重新排列
+            var num = 1;
+            $.each($('.w-business .wrap'), function (item, wrap) {
+                var left = $(wrap).position().left;
+                if (left < 100 - width) {
+                    if (wrap.className.includes('last')) {
+                        $(wrap).insertAfter($('.w-business .last').eq(1));
+                        $(wrap).css('left', Math.abs($(wrap).position().left));
+                    } else {
+                        $(wrap).insertBefore($('.w-business .last').eq(1));
+                        $(wrap).css('left', (num++ * width));
+                        console.log(wrap, item);
+                    };
+                };
             });
         };
         $('.w-business .wrap').each(function (i, wrap) {// 添加动画效果
@@ -311,11 +320,13 @@ footer('./common/footer.html');//执行底部脚本
     //点击跳转功能
     $('.w-business .click').on('click', 'span', function () {
         var index = $(this).index();
-        var gap = $('.w-business .wrap').eq(index).position().left;
-        var bln = (gap < 0);
+        var gap = $('.w-business .wrap').eq(index + 1).position().left;
+        var bln = (gap < 0);//点击向左滚动不重新排列
+        // console.log(gap);
+
         // 停止
         clearInterval(timer);
-        timer = setInterval(lunBo, 4000);//启动定时器
+        timer = setInterval(lunBo, time);//启动定时器
         if ($(this).hasClass('active')) {
             return
         };
