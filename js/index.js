@@ -22,11 +22,11 @@ footer('./common/footer.html');//执行底部脚本
     $('.w-banner>img').attr('draggable', 'false');
     var b_width = $('.w-banner').width();
     $('.w-banner>img').each(function (index, img) {
-        $(img).css('left', b_width * index);
+        $(img).css('left', b_width * (index - 1));
     });
-    //计时器
-    var timer, time = 7000, item = 1;
-    timer = setInterval(function () {//每次时间相同
+    //计时器，开启自动滚动
+    var timer, time = 7000;
+    timer = setInterval(function () {//使用变量time，使初次滚动和以后每次滚动间隔时间相同
         lunBo();
         clearInterval(timer);
         timer = setInterval(lunBo, time);
@@ -38,43 +38,54 @@ footer('./common/footer.html');//执行底部脚本
         clearInterval(timer);
         timer = setInterval(lunBo, time);
     });
-    $('.w-banner').on('click', 'span', function () {//点击跳转
-        // 停止动画
-        $('.w-banner>img').stop();
+
+    //手动点击滚动功能
+    $('.w-banner').on('click', 'span', function () {
+        var index = $(this).index();
+        var gap = $('.w-banner>img').eq(index + 1).position().left;
+        var bln = (gap < 0);//点击向左滚动不重新排列
+
+        // 刷新定时器
         clearInterval(timer);
-        var span1 = $(this).siblings('.active');
-        var index = $(this).attr('tab-index');
-        var gap = $('.w-banner>img[tab-index="' + index + '"]').eq(0).position().left;
-
-        // 替换类名
-        $('.w-banner span').removeClass('active')
-        item = index - 1;
-
-        //跳转
-        lunBo(gap, true);
         timer = setInterval(lunBo, time);
+        if ($(this).hasClass('active')) { return };//点击已激活的节点，不停止当前动画
+        $('.w-banner>img').stop();//停止当前动画
+        lunBo(gap, bln, index);//跳转
     });
 
-    function lunBo(gap, bln) {//轮播图效果
+    function lunBo(gap, bln, clickIndex) {//轮播图效果
         // 初始值
-        item %= 3;
         time = 9500;
         gap = gap || b_width;
-        //重新排序
-        if (item == 1 && !bln) {
-            $('.w-banner>img').each(function (index, img) {
-                $(img).css('left', b_width * index);
+
+        // 切换点击节点激活状态
+        var index = $('.w-banner>div>span.active').index() + 1;
+        clickIndex = (clickIndex == 0) ? (clickIndex + '') : clickIndex;//clickIndex为0时转字符串
+        index = (clickIndex) || (index < $('.w-banner>div>span').length ? index : 0);//clickIndex存在时将其赋值给index
+        $('.w-banner>div>span.active').removeClass('active');
+        $('.w-banner>div>span').eq(index * 1).addClass('active');
+
+        //重新排列轮播图
+        if ((index == 0 && !bln)) {
+            var num = 1;
+            $.each($('.w-banner>img'), function (item, img) {
+                var left = $(img).position().left;
+                if (left < 100 - b_width) {
+                    if (img.className.includes('last')) {
+                        $(img).insertAfter($('.w-banner>.last').eq(1));
+                        $(img).css('left', Math.abs($(img).position().left));
+                    } else {
+                        $(img).insertBefore($('.w-banner>.last').eq(1));
+                        $(img).css('left', (num++ * b_width));
+                    };
+                };
             });
         };
-        // 替换类名
-        $('.w-banner>div>span').eq(item - 1).removeClass('active');
-        $('.w-banner>div>span').eq(item).addClass('active');
 
-        // 动画
+        // 激活动画
         $('.w-banner>img').each(function (i, img) {
             $(img).animate({ left: $(img).position().left - gap }, 2500, 'easeOutQuad');
         });
-        item++;
     };
 
     // 温馨提示
@@ -247,7 +258,7 @@ footer('./common/footer.html');//执行底部脚本
     //模块加载
     function addWrap(name) {
         var arr = Object.keys(resource[name]);
-        var len = arr.length / 2;
+        var len = arr.length - 1;
         for (var i = 0; i < len; i++) {
             var wrap = document.createElement('div');
             $(wrap).addClass('wrap');
@@ -285,7 +296,24 @@ footer('./common/footer.html');//执行底部脚本
     };
     var timer = null, time = 5500;
     var width = $('.w-business').width();
-    //轮播图效果
+
+    //手动点击滚动功能
+    $('.w-business .click').on('click', 'span', function () {
+        var index = $(this).index();
+        var gap = $('.w-business .wrap').eq(index + 1).position().left;
+        var bln = (gap < 0);//点击向左滚动不重新排列
+
+        // 停止
+        clearInterval(timer);
+        timer = setInterval(lunBo, time);//启动定时器
+        if ($(this).hasClass('active')) {//点击已激活的节点，不停止当前动画
+            return
+        };
+        $('.w-business .wrap').stop();
+        lunBo(gap, bln, index);//跳转
+    });
+
+    //轮播图自动滚动效果
     function lunBo(gap, bln, clickIndex) {
         time = 7000;//循环间隔
         // 初始值
@@ -297,7 +325,7 @@ footer('./common/footer.html');//执行底部脚本
         $('.w-business .click span.active').removeClass('active');
         $('.w-business .click span').eq(index * 1).addClass('active');
 
-        if ((index == 0 && !bln)) {//重新排列
+        if ((index == 0 && !bln)) {//重新排列轮播图
             var num = 1;
             $.each($('.w-business .wrap'), function (item, wrap) {
                 var left = $(wrap).position().left;
@@ -308,7 +336,6 @@ footer('./common/footer.html');//执行底部脚本
                     } else {
                         $(wrap).insertBefore($('.w-business .last').eq(1));
                         $(wrap).css('left', (num++ * width));
-                        console.log(wrap, item);
                     };
                 };
             });
@@ -317,24 +344,9 @@ footer('./common/footer.html');//执行底部脚本
             $(wrap).animate({ left: $(wrap).position().left - gap }, 1500, 'easeOutQuad');
         });
     };
-    //点击跳转功能
-    $('.w-business .click').on('click', 'span', function () {
-        var index = $(this).index();
-        var gap = $('.w-business .wrap').eq(index + 1).position().left;
-        var bln = (gap < 0);//点击向左滚动不重新排列
-        // console.log(gap);
-
-        // 停止
-        clearInterval(timer);
-        timer = setInterval(lunBo, time);//启动定时器
-        if ($(this).hasClass('active')) {
-            return
-        };
-        $('.w-business .wrap').stop();
-        lunBo(gap, bln, index);//跳转
-    });
+    
     var wrapList = {}
-    //点击切换wrap模块
+    //点击切换物业模块
     $('.w-business .c-top').on('click', 'li', function () {
         var name = this.className;
         var wrapName = $('.w-business .c-top .active').parent('li')[0].className;

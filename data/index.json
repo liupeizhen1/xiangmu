@@ -81,8 +81,28 @@
                 "p": "基于海量的数据积累，致力于通过信息技术、大数据分析平台，打造高效的分析应用、风险管理平台，让每一个小微个体享有快捷可靠的金融服务。",
                 "img": "./img/index_img/jinrong.png",
                 "a": "javascript:;"
+            },
+            "kuaidi": {
+                "name": "kuaidi",
+                "h4": "快递服务",
+                "p": "顺丰依托自有丰富运力资源，通过多项不同的快递产品和增值服务，来满足客多样化、个性化的寄件需求。",
+                "img": "./img/index_img/kuaidi.jpg",
+                "a": "javascript:;"
+            },
+            "lengyun": {
+                "name": "lengyun",
+                "h4": "冷运服务",
+                "p": "顺丰依托强大的冷链运输网和温控管理系统，为食品&医药冷链客户提供专业的冷运服务。",
+                "img": "./img/index_img/lengyun.jpg",
+                "a": "javascript:;"
+            },
+            "cangchu": {
+                "name": "lengyun",
+                "h4": "仓储服务",
+                "p": "顺丰依托自身强大的仓储和运输网络资源，为电商客户打造的一站式物流服务。",
+                "img": "./img/index_img/cangchu.jpg",
+                "a": "javascript:;"
             }
-            
         }
     }
 }
